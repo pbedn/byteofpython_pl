@@ -1,0 +1,120 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]}}
+
+Jeżeli przeczytałeś gruntownie tę książkę i trenowałeś pisanie wielu programów, Python musiał stać się dla ciebie przyjaznym i wygodnym narzędziem. Prawdopodobnie napisałeś też parę innych programów, aby samemu przetestować wszystkie opcje i potrenować swoje umiejętności. Jeżeli jeszcze tego nie zrobiłeś, powinieneś nadrobić te zaległości. Ostatnie pytanie, które ci zadam brzmi: &bdquo;Co dalej?&rdquo;
+
+Proponuję ci zmierzyć się z takim problemem:
+
+: '''Stwórz w Pythonie własną ''książkę adresową'', w której będziesz mógł dodawać, usuwać, modyfikować, wyświetlać i przeszukiwać rekordy dotyczące twoich kontaktów. Każdy rekord powinien zawierać takie dane jak imię i nazwisko oraz telefon lub e&ndash;mail. Dane muszą być przechowywane w pliku.'''
+
+To dosyć proste, dzięki tym wszystkim sztuczkom, które dotychczas poznaliśmy. Jeśli nadal potrzebujesz pomocy, oto wskazówka:
+
+;Wskazówka (Nie czytaj!)
+: Stwórz klasę, która będzie reprezentowała informacje o jednej osobie. Obiekty osób przechowaj w słowniku, przy czym użyj ich imion jako kluczy. Wykorzystaj moduł pickle do zachowania danych na dysku. Do dodawania, usuwania i modyfikowania danych o osobach użyj wbudowanych metod słownika.
+
+Jak tylko będziesz w stanie to zrobić, możesz śmiało nazwać siebie programistą Pythona.<!-- Teraz [http://www.swaroopch.com/contact/ wyślij mi] natychmiast e-maila z podziękowaniami za świetną książkę! ;-) Oczywiście nie musisz, ale byłoby mi miło, gdybyś to zrobił. Dodatkowo rozważ [http://www.swaroopch.com/notes/Notes:Community_Portal donację lub sugestię] w celu wsparcia dalszego jej rozwijania.-->
+
+Jeśli to było dla ciebie łatwe zadanie, oto następne:
+
+: '''Zaimplementuj [http://unixhelp.ed.ac.uk/CGI/man-cgi?replace komendę podmiany]. Ta komenda będzie zamieniać jeden ciąg znaków na inny we wszystkich plikach z danego zbioru.'''
+
+Komenda podmiany może być tak prosta albo tak skomplikowana, jak tylko chcesz, począwszy od zwykłej zamiany ciągu znaków, na szukaniu regularnych wyrażeń skończywszy.
+
+Na koniec przedstawiam ci kilka ścieżek do dalszej podróży w świecie Pythona.
+
+Uwaga od tłumacza: Wszystkie linki podane na tej stronie prowadzą do stron w języku angielskim.
+
+Df9rf1  <a href="http://nuphgzzmwlpd.com/">nuphgzzmwlpd</a>, [url=http://ykgvvjvubkdh.com/]ykgvvjvubkdh[/url], [link=http://yjkhwaykzhva.com/]yjkhwaykzhva[/link], http://ydfdhiyxanxm.com/
+
+==Przykładowy kod==
+Najlepszą drogą do nauczenia się języka programowania jest pisanie i czytanie ogromnych ilości kodu:
+:[http://pleac.sourceforge.net/pleac_python/index.html &rarr; Projekt PLEAC]
+:[http://rosettacode.org/wiki/Category:Python &rarr; Repozytorium kodu na Rosetta Code]
+:[http://www.java2s.com/Code/Python/CatalogPython.htm &rarr; Pythonowe przykłady na java2s.com]
+:[http://code.activestate.com/recipes/langs/python/ &rarr; Pythonowa książka kucharska] - niebywale wartościowa kolekcja przepisów i porad na rozwiązywanie konkretnych rodzajów problemów przy użyciu Pythona. Każdy użytkownik Pythona powinien to przeczytać.
+
+==Pytania i odpowiedzi==
+:[http://docs.python.org/dev/howto/doanddont.html &rarr; Oficjalne pythonowe nakazy i zakazy]
+:[http://www.python.org/doc/faq/general/ &rarr; Oficjalne pythonowe FAQ]
+:[http://norvig.com/python-iaq.html &rarr; Lista pytań, na które rzadko są dawane odpowiedzi, autorstwa Petera Norviga]
+:[http://dev.fyicenter.com/Interview-Questions/Python/index.html &rarr; Pytania i odpowiedzi dotyczące Pythona w formie wywiadu]
+:[http://stackoverflow.com/questions/tagged/python &rarr; Pytania związane z Pythonem na Stack Overflow]
+
+==Wskazówki i sztuczki==
+:[http://www.siafoo.net/article/52 &rarr; Triki i sztuczki w Pythonie]
+:[http://ivory.idyll.org/articles/advanced-swc/ &rarr; Zaawansowana stolarka oprogramowania przy użyciu Pythona]
+:[http://gnosis.cx/publish/tech_index_cp.html &rarr; Czarujący Python] &mdash; doskonała seria artykułów dotyczących Pythona, autorstwa Davida Mertza.
+:[http://www.python.rk.edu.pl/ &rarr; Biblioteka Riklaunima] &mdash; zbiór porad i samouczków w języku polskim.
+
+==Książki, artykuły, samouczki, filmy wideo==
+Logicznym następnym krokiem po tej książce jest niesamowite dzieło Marka Pilgrima [http://pl.wikibooks.org/wiki/Zanurkuj_w_Pythonie Zanurkuj w Pythonie] (polskie tłumaczenie na Wikibooks). Ten podręcznik opisuje szczegółowo takie tematy jak na przykład regularne wyrażenia, procesowanie XML, serwisy internetowe, testowanie jednostek i wiele innych.
+
+Inne przydatne źródła to na przykład:
+:[http://showmedo.com/videos/python &rarr; ShowMeDo &mdash; filmy wideo o Pythonie]
+:[http://youtube.com/results?search_query=googletechtalks+python &rarr; GoogleTechTalks &mdash; filmy wideo o Pythonie]
+:[http://www.awaretek.com/tutorials.html &rarr; Obszerna lista pythonowych samouczków na awaretek.com]
+:[http://effbot.org/zone/ &rarr; Strefa Pythona na effbot.org]
+:[http://groups.google.com/group/comp.lang.python.announce/browse_thread/thread/37de95ef0326293d &rarr; Linki na końcu każdego e&ndash;maila Python&ndash;URL!]
+:[http://pythonpapers.org/ &rarr; Dokumenty Pythona]
+
+==Dyskusja==
+Jeżeli utknąłeś z jakimś problemem w Pythonie i nie masz pojęcia, kto mógłby ci pomóc, wtedy [http://groups.google.com/group/comp.lang.python/topics pythonowa grupa dyskusyjna] jest najlepszym miejscem, w którym możesz zadać swoje pytanie.
+
+Oczywiście upewnij się najpierw, że próbowałeś już znaleźć rozwiązanie gdzie indziej oraz że wykorzystałeś wszystkie swoje pomysły, zanim zaczniesz pytać.
+
+==Nowości==
+Jeśli chcesz poznać najnowsze nowinki ze świata Pythona, odwiedź [http://planet.python.org/ Planetę Pythona].
+
+==Instalowanie bibliotek==
+Istnieje mnóstwo bibliotek wolnego oprogramowania w [http://pypi.python.org/pypi bibliotece paczek Pythona], które możesz użyć w swoich programach.
+
+Do instalowania i używania ich możesz wykorzystać wspaniałe [http://peak.telecommunity.com/DevCenter/EasyInstall#using-easy-install narzędzie łatwej instalacji], autorstwa Philipa J. Eby'ego.
+
+==Oprogramowanie graficzne==
+Podejrzewam, że chciałbyś tworzyć własne graficzne programy w Pythonie. Pomoże ci w tym biblioteka GUI (''Graphical User Interface'' &mdash; ang. graficzny interfejs użytkownika) wraz z jej pythonowymi powiązaniami. Powiązania to to, co umożliwia ci pisanie programów w Pythonie, które używają bibliotek napisanych w C, C++ i innych językach.
+
+Dla Pythona istnieje mnóstwo możliwości wyboru GUI:
+
+;PyQt
+: Powiązanie z zestawem Qt, które jest też fundamentem środowiska KDE. Qt jest bardzo proste do nauczenia się oraz potężne w akcji, głównie dzięki projektantowi Qt oraz świetnej dokumentacji. PyQt jest darmowe, jeżeli chcesz tworzyć otwarte oprogramowanie (na licencji GPL), lecz musisz je kupić, jeżeli zamierzasz tworzyć oprogramowanie prawnie zastrzeżone. Począwszy od Qt 4.5 możesz też za jego pomocą tworzyć na licencjach innych niż GPL. Aby zacząć pracę z tym GUI, przeczytaj [http://zetcode.com/tutorials/pyqt4/ samouczek PyQt] lub [http://www.qtrac.eu/pyqtbook.html księgę PyQt].
+
+;PyGTK
+: Powiązanie z zestawem GTK+, które jest też fundamentem środowiska GNOME. W GTK+ jest trochę dziwactw, ale gdy tylko się z tym zaznajomisz, będziesz mógł w nim szybko tworzyć aplikacje GUI. Projektant graficznego interfejsu Glade jest niezbędny. Dokumentacja jeszcze jest ulepszana. GTK+ działa dobrze na Linuxie, lecz implementacja na Windowsa nie jest kompletna. W GTK+ możesz tworzyć zarówno otwarte jak i zastrzeżone oprogramowanie. Aby zacząć pracę z tym GUI, przeczytaj [http://www.pygtk.org/tutorial.html samouczek PyGTK].
+
+;wxPython
+: Powiązanie z zestawem wxWidgets. wxPython posiada podpiętą krzywą uczenia się. Jest bardzo przenośny, dział na Linuxie, Windowsie, Mac oraz nawet na wbudowanych platformach. Jest mnóstwo zintegrowanych środowisk programistycznych (IDE) dostępnych dla wxPython, w tym projektanci GUI, jak na przykład SPE (Stani's Python Editor) czy [http://wxglade.sourceforge.net/ wxGlade]. W wxPython możesz tworzyć zarówno otwarte jak i zastrzeżone oprogramowanie. Aby zacząć pracę z tym GUI, przeczytaj [http://zetcode.com/wxpython/ samouczek wxPython].
+
+;TkInter
+: To jedno z najstarszych istniejących GUI. Jeżeli używałeś IDLE, to widziałeś w akcji program TkInter. Nie posiada najlepszego wyglądu i jakości odbioru ponieważ ma stare podejście do tego tematu. TkInter jest przenośne i działa zarówno na Linuxie/Unixie, jak i na Windowsie. Co ważne, TkInter jest częścią standardowej dystrybucji Pythona. Aby zacząć pracę z tym GUI, przeczytaj [http://www.pythonware.com/library/tkinter/introduction/ samouczek TkInter].
+
+Więcej opcji znajdziesz na oficjalnej stronie Pythona w dziale dotyczącym [http://wiki.python.org/moin/GuiProgramming programowania GUI].
+
+===Podsumowanie narzędzi GUI===
+Niestety nie istnieje jedno standardowe narzędzie GUI dla Pythona. Proponuję, żebyś wybrał jedno z tych, zależnie od potrzeb. Pierwszy czynnik, to kwestia, czy chcesz płacić za swoje narzędzie. Drugi czynnik, to kwestia, czy chcesz, żeby twój program działał tylko na Linuxie, tylko na Windowsie, tylko na Mac, czy może na nich wszystkich. Trzeci czynnik, gdy wybrałeś Linuxa, to kwestia, czy używasz KDE, czy GNOME.
+
+==Różne implementacje==
+Zazwyczaj język programowania składa się z dwóch części &mdash; języka i oprogramowania. Język, to ''jak'' piszesz, zaś oprogramowanie to to, ''co'' uruchamia twój program.
+
+W naszej przygodzie używaliśmy oprogramowania ''CPython''. Ta nazwa powstała z tego, że to środowisko jest napisane w języku C oraz to jest ''Klasyczny interpreter Pythona'' (ang. ''Classical Python interpreter'').
+
+Jednak istnieją też inne środowiska, w których możesz uruchomić swoje programy:
+
+;[http://www.jython.org/ Jython]
+: Implementacja Pythona na platformę Java. Dzięki niej możesz używać w swoich programach bibliotek i klas Javy i na odwrót.
+
+;[http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython IronPython]
+: Implementacja Pythona na platformę .NET. Dzięki niej możesz używać w swoich programach bibliotek i klas .NET i na odwrót.
+
+;[http://codespeak.net/pypy/dist/pypy/doc/index.html PyPy]
+: Implementacja Pythona napisana w Pythonie. To projekt odkrywczy, mający na celu stworzenie szybkiego i łatwego do ulepszania interpretera, gdyż będzie on napisany w języku dynamicznym (w przeciwieństwie do języków statycznych, takich jak C czy Java w powyższych implementacjach).
+
+;[http://www.stackless.com/ Stackless Python]
+: Implementacja Pythona skupiająca się na przedstawieniach opartych na wątkach.
+
+Są również inne, takie jak [http://common-lisp.net/project/clpython/ CLPython] &mdash; implementacja w języku Common Lisp lub [https://wiki.mozilla.org/Tamarin:IronMonkey IronMonkey] &mdash; IronPython działający na interpreterze JavaScript, dzięki któremu można użyć Pythona zamiast Javascriptu do tworzenia własnych programów internetowych.
+
+Każda z nich ma swoje rejony, w których jest użyteczna.
+
+==Podsumowanie==
+A więc doszliśmy do końca tej książki, ale jak to mówią, to dopiero ''początek końca''! Jesteś teraz zachłannym użytkownikiem Pythona i bez wątpienia jesteś gotowy do rozwiązywania wielu problemów przy użyciu właśnie tego języka. Możesz zacząć automatyzować swój komputer, aby sam wykonywał mnóstwo rzeczy, których wcześniej nawet sobie nie wyobrażałeś, możesz pisać własne gry, masz teraz naprawdę niesamowite możliwości! Więc, do roboty!
+
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]}}

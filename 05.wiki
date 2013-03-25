@@ -1,0 +1,249 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|[[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]|}}
+
+==Wprowadzenie==
+Wypisywanie samego &bdquo;Ahoj, przygodo!&rdquo; raczej Ci nie wystarczy, nieprawdaż? Z pewnością chcesz zrobić więcej: chcesz coś wpisać, przerobić to i dostać z tego coś z powrotem. Możemy to osiągnąć, używając stałych i zmiennych.
+
+==Stałe dosłowne==
+;Od tłumacza
+: Zgodnie z zasadami polskiej pisowni separatorem części dziesiętnej jest przecinek. Python używa jednak zasad anglosaskich, gdzie separatorem części dziesiętnej jest kropka. Należy o tym pamiętać przy pisaniu programów.
+
+Przykładem stałej dosłownej jest liczba, np. <tt>5</tt>, <tt>1.23</tt>, <tt>9.25e-3</tt> lub też łańcuch w rodzaju <tt>'To jest łańcuch'</tt> albo <tt>"To też jest łańcuch!"</tt>. Nazywa się ją dosłowną, bo jest ''dosłowna'', tzn. zawsze używasz jej wartości w sposób dosłowny. Przykładowo liczba <tt>2</tt> zawsze reprezentuje samą siebie i nic innego. Jest stałą, ponieważ jej wartości nie można zmienić. Stąd wszystkie stałe tego typu nazywa się stałymi dosłownymi.
+
+==Liczby==
+Liczby w Pythonie dzielimy na cztery typy: całkowite (ang. ''integers''), długie całkowite (ang. ''long integers''), zmiennoprzecinkowe (ang. ''floating point'' albo krócej: ''floats'') i zespolone (ang. ''complex'').
+* Przykładami liczb całkowitych mogą być: <code>2</code>, <code>1025</code>.
+* Długie całkowite są po prostu znacznie większe.
+* Przykłady liczb zmiennoprzecinkowych to: <code>3.23</code> i <code>52.3E-4</code>. Notacja <tt>E</tt> oznacza potęgę dziesiątki. W naszym przykładzie <code>52.3E-4</code> oznacza dokładnie: <tt>52,3 &middot; 10<sup>-4</sup></tt>.
+* Liczby zespolone to np.: <code>(-5 + 4j)</code> i <code>(2.3 - 4.6j)</code>.
+
+==Łańcuchy==
+Łańcuch (ang. string) to po prostu zlepek słów. Mówiąc bardziej formalnie, łańcuch to ''ciąg znaków''.
+
+Jestem niemal pewien, że będziesz używał łańcuchów w większości swoich programów, dlatego zwróć szczególną uwagę na sposoby ich używania. A oto one:
+
+===Pojedynczy cudzysłów===
+Można określić łańcuch, używając pojedynczego cudzysłowu, np. <code>'Możecie mnie cytować.'</code>. Wszystkie białe znaki (np. spacje, tabulatory) są zachowane w niezmienionej postaci.
+
+===Podwójny cudzysłów===
+Łańcuchy w podwójnych cudzysłowach zachowują się dokładnie tak samo, jak w pojedynczych. Przykład: <code>"Jak Cię zwą?"</code>.
+
+===Potrójny cudzysłów===
+Za pomocą potrójnych cudzysłowów możesz oznaczać łańcuchy wielolinijkowe. Co więcej, wewnątrz nich możesz swobodnie używać zarówno pojedynczych, jak i podwójnych cudzysłowów. Najlepiej zilustruje to przykład:
+
+<!--TODO: wsadzić coś fajnego po polsku zamiast Bonda-->
+<pre>
+'''To jest łańcuch wielolinijkowy. Tu mamy pierwszy wiersz.
+To jest drugi wiersz.
+"What's your name?," I asked.
+He said "Bond, James Bond."
+'''
+</pre>
+
+===Znaki ucieczki===
+Wyobraź sobie, że potrzebujesz łańcuch, który zawierałby pojedynczy cudzysłów (<tt>'</tt>), na przykład <tt>Nie lubię Harry'ego</tt>. Jak byś to zrobił? Nie możesz zapisać tak: <code>'Nie lubię Harry'ego'</code>, bo Python nie będzie miał szans się dowiedzieć, gdzie łańcuch ma się kończyć, a gdzie zaczynać. Musimy więc wyraźnie dać mu znać, że ten konkretny cudzysłów pomiędzy <tt>y</tt> a <tt>e</tt> nie oznacza końca łańcucha. Tutaj z pomocą przychodzą nam właśnie ''znaki ucieczki''. Za ich pomocą możemy zapisać ów cudzysłów tak: <tt>\'</tt> &mdash; spójrz na ukośnik wsteczny. Zatem nasz łańcuch, poprawnie zapisany, wyglądałby tak: <code>'Nie lubię Harry\'ego'</code>.
+
+Oczywiście w tym przypadku możesz również użyć podwójnych cudzysłowów do oznaczenia łańcucha: <code>"Nie lubię Harry'ego"</code>. Jeżeli chciałbyś wewnątrz takiego łańcucha zawrzeć podwójny cudzysłów, podobnie musisz użyć znaków ucieczki. Przy zapisywaniu ukośników wstecznych również używamy znaków ucieczki: <tt>\\</tt>.
+
+A co w przypadku łańcuchów wielolinijkowych? Można użyć potrójnych cudzysłowów, jak pokazaliśmy wyżej. Można także użyć znaków ucieczki, aby zapisać ''znak specjalny'' &mdash; znak nowej linii. Robimy to w następujący sposób: <tt>To jest pierwszy wiersz\nTo jest drugi wiersz</tt>. Oprócz <tt>\n</tt> istnieje jeszcze wiele podobnych znaków specjalnych, szczególnie użyteczny może być znak tabulacji: <tt>\t</tt>.
+
+Możemy także zrobić rzecz odwrotną, a mianowicie zapisać łańcuch niezawierający znaki nowej linii w wielu wierszach w programie:
+
+<pre>
+"To jest pierwsze zdanie. \
+A to drugie."
+</pre>
+
+Powyższy przykład jest równoważny z: <code>"To jest pierwsze zdanie. A to drugie."</code>. Zauważ, że umieściliśmy spację przed ukośnikiem wstecznym &mdash; w przeciwnym wypadku <tt>A</tt> występowałoby w łańcuchu bezpośrednio po kropce (przyp. tłumacza).
+
+===Łańcuchy surowe===
+Jeżeli musisz stworzyć łańcuch, który nie zawiera żadnych znaków specjalnych ani nie są respektowane znaki ucieczki, przydatną opcją stają się łańcuchy ''surowe'' (ang. raw). Tworzymy je, poprzedzając łańcuch literą <tt>r</tt> lub <tt>R</tt>. Przykład: <code>r"Nowe linie zapisujemy za pomocą \n"</code>.
+
+===Unikodowe łańcuchy===
+Unikod jest ustandaryzowanym sposobem zapisu tekstu w różnych językach. Jeśli chcesz zapisać tekst np. w języku polskim, prawdopodobnie wiesz, że najlepiej jest użyć edytora z obsługą unikodu. Python również daje Ci możliwość zdefiniowania unikodowego łańcucha znaków: wystarczy przy zapisie łańcucha jako przedrostek dodać <tt>u</tt> lub <tt>U</tt>, na przykład: <code>u"Ten tekst zapisaliśmy w Unikodzie."</code>. Niezależnie od tego, z jakiego kodowania korzysta dany komputer, nie będzie on miał problemu z poprawnym odczytaniem tekstu zapisanego w unikodzie, więc używaj unikodowego zapisu łańcuchów dla tekstów, które zawierają np. polskie znaki, a mogą być odczytywane przez różne komputery (przyp. tłumacza).
+
+===Łańcuchy są niezmienialne===
+Oznacza to, że jeżeli już raz utworzyłeś łańcuch, nie możesz go zmienić. Co prawda może się to wydawać wadą, ale tak nie jest. W programach, które później napiszemy, przekonamy się, dlaczego to nas wcale nie ogranicza.
+
+===Dosłowne łączenie łańcuchów===
+Jeżeli umieścimy dwa łańcuchy obok siebie, Python automatycznie je połączy. Spójrz na przykład: <code>'Jak ' 'Cię zwą?'</code> zostanie automatycznie przekonwertowane do <code>'Jak Cię zwą?'</code>.
+
+;Uwaga dla programujących w C/C++
+: W Pythonie nie ma wydzielonego typu <tt>char</tt>. Nie ma takiej potrzeby i raczej nie będziecie za tym tęsknić.
+
+;Uwaga dla programujących w Perlu/PHP
+: Pamiętajcie, że łańcuchy zawarte w pojedynczych i podwójnych cudzysłowach są dokładnie tym samym: nie ma żadnej różnicy.
+
+;Uwaga dla używających wyrażeń regularnych
+: Zawsze używajcie łańcuchów surowych, kiedy pracujecie z wyrażeniami regularnymi. W przeciwnym wypadku będziecie zmuszeni używać dużej liczby ukośników wstecznych. Przykładowo <code>r'\1'</code> trzeba by zapisać jako <code>'\\1'</code>.
+
+==Zmienne==
+Używanie tylko stałych dosłownych może szybko stać się nudne &mdash; potrzebujemy sposobu do przechowywania informacji i manipulowania nimi. Do tego właśnie służą ''zmienne''. Są dokładnie tym, co mówi nam ich nazwa, czyli mogą ulegać zmianom, a to oznacza, że możesz w nich przechowywać cokolwiek. Zmienne to nic innego, tylko fragmenty pamięci Twojego komputera, w których przechowywana jest jakaś informacja. W przeciwieństwie do stałych, musisz mieć możliwość dostępu do tych danych, tak więc zmiennym nadajemy nazwy. Najpierw tylko zobaczmy, jakie nazwy możesz nadać zmiennym.
+
+==Nazewnictwo identyfikatorów==
+Zmienne są przykładami identyfikatorów. ''Identyfikatory'' to nazwy, które nadajemy ''czemuś'' do zidentyfikowania tego. Tworząc identyfikatory w Pythonie, musisz trzymać się kilku zasad:
+
+* Pierwszym znakiem identyfikatora musi być mała lub duża litera alfabetu (łacińskiego, więc polskie znaki są niedopuszczalne &mdash; przyp. tłumacza) albo podkreślnik (<tt>_</tt>).
+* Pozostałe znaki mogą zawierać małe lub duże litery alfabetu łacińskiego, podkreślniki oraz cyfry (<tt>0</tt>&ndash;<tt>9</tt>).
+* Wielkość znaków w identyfikatorze jest ważna. Stąd <code>mojanazwa</code> i <code>mojaNazwa</code> to zupełnie co innego. Zwróć uwagę na duże <tt>N</tt> w drugim przykładzie.
+* Przykłady ''poprawnych'' identyfikatorów to: <code>i</code>, <code>__moja_nazwa</code>, <code>nazwa_23</code>, <code>a1b2_c3</code>.
+* Przykłady ''niepoprawnych'' identyfikatorów to: <code>2nazwy</code>, <code>nazwa ze spacjami</code>, <code>moja-nazwa</code>.
+
+==Typy danych==
+Zmienne przechowują wartości różnego rodzaju: są to ''typy danych''. Podstawowe typy danych już poznaliśmy, są to liczby i łańcuchy. W następnych rozdziałach dowiemy się, jak tworzyć nasze własne typy danych za pomocą klas.
+
+==Obiekty==
+Od teraz zapamiętaj sobie, że Python traktuje wszystkie rzeczy użyte w programie jako ''obiekty''. Rozumiemy to w ogólnym sensie. Zamiast mówić &bdquo;to ''coś''&rdquo;, mówimy &bdquo;ten ''obiekt''&rdquo;.
+
+;Uwaga dla programujących w językach zorientowanych obiektowo
+: Python jest silnie zorientowany obiektowo, co oznacza, że wszystko jest obiektem, włącznie z liczbami, łańcuchami i funkcjami.
+
+==Przykład użycia zmiennych i stałych dosłownych==
+Teraz zobaczymy, jak w programach używać zmiennych razem ze stałymi dosłownymi. Zapisz poniższy przykład i uruchom program.
+
+===Jak pisać programy w Pythonie?===
+Od tego momentu nasza standardowa procedura przy zapisie i uruchamianiu programów w Pythonie będzie wyglądała następująco:
+
+# Otwórz swój ulubiony edytor.
+# Wprowadź/Skopiuj kod programu podany w przykładzie.
+# Zapisz plik pod nazwą zapisaną w komentarzu. Przyjmijmy, że programy Pythona będziemy zapisywali z rozszerzeniem <tt>.py</tt>.
+# Uruchom interpreter Pythona w powłoce za pomocą polecenia <code>python nazwa.py</code>, gdzie <tt>nazwa</tt> jest nazwą pliku lub użyj IDLE (tudzież PythonWin &mdash; przyp. tłumacza), aby uruchomić program. Możesz uruchomić program bezpośrednio za pomocą metody opisanej wcześniej.
+
+===Przykład===
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: zmienne.py
+
+i = 5
+print i
+i = i + 1
+print i
+s = '''To jest łańcuch wielolinijkowy.
+To jest drugi wiersz.'''
+print s
+</source>
+
+Rezultat:
+
+<pre>
+$ python zmienne.py
+5
+6
+To jest łańcuch wielolinijkowy.
+To jest drugi wiersz.
+</pre>
+
+Jak to działa:
+
+Najpierw przypisujemy stałą dosłowną <code>5</code> do zmiennej <code>i</code> za pomocą operatora przypisania (<code>=</code>). Linia ta nazywa się poleceniem, ponieważ zleca ona Pythonowi wykonanie czegoś: w tym przypadku łączymy nazwę zmiennej <code>i</code> z wartością <code>5</code>.
+
+Następnie, również za pomocą polecenia, wypisujemy wartość zmiennej <code>i</code> na ekran, używając <code>print</code>.
+
+Później dodajemy <code>1</code> do wartości przechowywanej w zmiennej <code>i</code> i zapisujemy nowo obliczoną wartość do tej zmiennej. Potem wypisujemy wartość zmiennej i, jak się spodziewaliśmy, dostajemy <code>6</code>.
+
+Analogicznie postępujemy ze zmienną <code>s</code>, której przydzielamy wartość dosłowną łańcucha i wypisujemy ją.
+
+;Uwaga dla programujących w językach ze statycznym typowaniem (jak C/C++)
+: Aby użyć zmiennej, wystarczy przydzielić jej jakąś wartość. Nie musimy tej zmiennej deklarować ani nadawać jej konkretnego typu danych.
+
+==Linie logiczne i fizyczne==
+Linia fizyczna to to, co Ty ''widzisz'', kiedy piszesz program. Linia logiczna to to, co Python ''widzi'' jako pojedyncze polecenie. Python domyślnie zakłada, że każda linia ''fizyczna'' odpowiada ''logicznej''.
+
+Przykładem linii logicznej jest dobrze znane nam <code>print 'Ahoj, przygodo!'</code>. Jeżeli znajdowało się ono również w jednej linii w programie (tak, jak to widzieliśmy w edytorze), to była to również jedna linia fizyczna.
+
+Zachęcamy do używania zawsze jednego polecenia na linię, dzięki czemu kod staje się bardziej czytelny.
+
+Jeśli chcesz zawrzeć więcej, niż jedną linię logiczną w jednej linii fizycznej, musisz użyć średnika (<tt>;</tt>), który oznacza po prostu koniec linii logicznej/polecenia. Przykładowo
+
+<source lang="py">
+i = 5
+print i
+</source>
+
+oznacza to samo, co
+
+<source lang="py">
+i = 5;
+print i;
+</source>
+
+Możesz to zapisać tak:
+
+<source lang="py">
+i = 5; print i;
+</source>
+
+a nawet tak:
+
+<source lang="py">
+i = 5; print i
+</source>
+
+Jednakże mimo tak dużej liczby możliwości, '''bardzo zalecam Ci''' przyzwyczajenie się do '''pisania wyłącznie pojedynczych linii logicznych w pojedynczych liniach fizycznych'''. Tylko w przypadku naprawdę długich linii logicznych możesz je zapisać w kilku liniach fizycznych. Chodzi o to, aby unikać użycia średnika tak bardzo, jak to tylko możliwe, ponieważ to skutkuje dużo czytelniejszym kodem. Żeby być szczerym, ''nigdy'' nie użyłem, ani nawet ''nie widziałem'' średnika w programie Pythona.
+
+Spójrzmy na przykład zapisu jednej linii logicznej w wielu liniach fizycznych. <!---This is referred to as explicit line joining. - jak to polscy pythonowcy tłumaczą?-->
+
+<source lang="py">
+s = 'To jest łańcuch. \
+Łańcuch się nie skończył.'
+print s
+</source>
+
+To nam da oczywiście na wyjściu:
+
+<pre>
+To jest łańcuch. Łańcuch się nie skończył.
+</pre>
+
+Analogicznie
+
+<source lang="py">
+print \
+i
+</source>
+
+jest równoznaczne z
+
+<source lang="py">
+print i
+</source>
+
+Czasami sytuacja jest tak jednoznaczna, że nie trzeba używać ukośników wstecznych. Dzieje się tak w przypadku, gdy w linii logicznej są nawiasy okrągłe, kwadratowe lub klamrowe. <!--Nazywa się to '''implicit line joining'''.--> Zobaczysz takie sytuacje na własne oczy, gdy tylko dojdziemy do rozdziału z listami.
+
+==Wcięcia==
+Białe znaki w Pythonie są znaczące. Zapamiętaj, że '''białe znaki na początku linii są znaczące'''. Nazywamy je '''wcięciami'''. Wiodące białe znaki (mamy cały czas na myśli spacje i znaki tabulacji) na początku linii logicznej są brane pod uwagę przy określaniu stopnia wcięcia danej linii logicznej, co z kolei pozwala Pythonowi grupować polecenia.
+
+Idąc tym tokiem rozumowania, łatwo się domyślić, że polecenia, które są tak samo ważne '''muszą''' mieć takie samo wcięcie. Każdy taki zestaw poleceń nazywamy '''blokiem'''. W następnych rozdziałach przekonamy się, jak bardzo bloki są ważne.
+
+Powinieneś również zapamiętać, że nieprawidłowe wcięcia pociągają za sobą czasem trudne do znalezienia błędy. Spójrz na ten przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: biale_znaki.py
+
+i = 5
+ print 'Wartość zmiennej to ', i # Błąd! Zauważ spację na początku linii
+print 'Powtarzam, wartość zmiennej to ', i
+</source>
+
+Próbując uruchomić powyższy program, prawdopodobnie otrzymasz następujący błąd:
+
+<pre>
+  File "biale_znaki.py", line 4
+    print 'Wartość zmiennej to ', i # Błąd! Zauważ spację na początku linii
+    ^
+IndentationError: unexpected indent
+</pre>
+
+Spójrz na spację na początku linii wskazanej przez Pythona. Błąd wychwycony przez Pythona oznacza, że składnia programu jest nieprawidłowa, czyli został on źle napisany. A co to oznacza dla Ciebie? '''Nie możesz dowolnie zaczynać nowych bloków poleceń''' (za wyjątkiem oczywiście bloku głównego, który kiedyś musisz przecież rozpocząć). Sytuacje, w których możesz rozpoczynać nowe bloki, zostaną opisane w następnych rozdziałach.
+
+===Jak używać wcięć?===
+'''Nie używaj''' mieszaniny tabulatorów i spacji do stosowania wcięć, ponieważ nie działa to prawidłowo na wszystkich platformach. ''Zdecydowanie polecam'' Ci, żebyś używał ''pojedynczego tabulatora'' lub ''czterech spacji'' na każdy jeden stopień wcięcia.
+
+Wybierz jeden z powyższych sposobów stosowania wcięć. A dokładniej, wybierz jeden i '''stale''' używaj ''tylko'' tego sposobu.
+
+==Podsumowanie==
+Przebrnęliśmy przez wiele treściwych szczegółów, więc możemy zaraz przejść do czegoś bardziej interesującego, jak na przykład kontrola przepływu. Zanim jednak to zrobimy, upewnij się, że oswoiłeś się ze wszystkim, co było w tym rozdziale, a zrozumienie tego nie sprawia Ci problemu.
+
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|[[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]|}}

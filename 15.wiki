@@ -1,0 +1,219 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wyjątki|Wyjątki]]|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|}}
+
+==Wprowadzenie==
+Biblioteka standardowa Pythona zawiera ogromną liczbę przydatnych modułów i jest częścią każdej standardowej instalacji Pythona. Dobrze jest zapoznać się z nią, gdyż wiele problemów może być szybko rozwiązanych, jeżeli znasz się na jej zakresie możliwości.
+
+Poznamy kilka najczęściej używanych modułów z tej biblioteki. Szczegółowy opis wszystkich elementów możesz znaleźć w dokumentacji Pythona w sekcji dotyczącej właśnie [http://docs.python.org/library/index.html biblioteki standardowej] (strona w jęz. angielskim).
+
+;Uwaga
+: Jeżeli ten rozdział okaże się dla ciebie zbyt skomplikowany, możesz go pominąć, ale radzę ci do niego wrócić, gdy już się trochę obeznasz z Pythonem.
+
+==Moduł sys==
+Moduł <code>sys</code> zawiera narzędzia związane z systemem. Już wcześniej zauważyliśmy, że <code>sys.argv</code> zwraca listę poleceń linii komend.
+
+Przypuśćmy, że chcemy sprawdzić wersję Pythona, jaką używamy, żeby, powiedzmy, upewnić się, że używamy wersji <tt>2.x</tt>, a nie <tt>3.x</tt>. Moduł <code>sys</code> nam to umożliwia w następujący sposób:
+
+<source lang="py">
+>>> import sys
+>>> sys.version_info
+(2, 6, 4, 'final', 0)
+>>> sys.version_info[0] == 2
+True
+</source>
+
+Jak to działa:
+
+Moduł <code>sys</code> ma krotkę <code>version_info</code>, która zawiera informację o wersji. Pierwszym elementem jest główny numer wersji. Możemy to wykorzystać, aby, powiedzmy, umożliwić programowi działanie jedynie w Pythonie <tt>2.6</tt>.
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: wersja.py
+
+import sys, warnings
+if (sys.version_info[0] != 2) or (sys.version_info[1] != 6):
+    warnings.warn("Ten program działa tylko w Pythonie 2.6!",
+        RuntimeWarning)
+else:
+    print 'Działa normalnie.'
+</source>
+
+Rezultat:
+
+<pre>
+$ python2.5 wersja.py
+wersja.py:8: RuntimeWarning: Ten program działa tylko w Pythonie 2.6!
+  RuntimeWarning)
+
+$ python2.6 wersja.py
+Działa normalnie.
+</pre>
+
+Jak to działa:
+
+Używamy innego modułu zwanego <code>warnings</code>, który wyświetla użytkownikowi ostrzeżenia. Jeśli wersja Pythona to nie <tt>2.6</tt>, wysyłamy odpowiednie ostrzeżenie.
+
+==Moduł logging==
+Co zrobić, gdybyś chciał zapisywać ważne wiadomości dotyczące działania i błędów w programie, żeby na bieżąco wiedzieć, czy coś się nie popsuło? Jak można &bdquo;gdzieś zapisać&rdquo; te informacje? Otóż używając modułu <code>logging</code>.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: log.py
+
+import os, platform, logging
+ 
+if platform.platform().startswith('Windows'):
+    logging_file = os.path.join(os.getenv('HOMEDRIVE'), os.getenv('HOMEPATH'), 'test.log')
+else:
+    logging_file = os.path.join(os.getenv('HOME'), 'test.log')
+ 
+print "Tworzenie logu w", logging_file 
+ 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s : %(levelname)s : %(message)s',
+    filename = logging_file,
+    filemode = 'w',
+)
+ 
+logging.debug("Start programu")
+logging.info("Coś się dzieje")
+logging.warning("Program padł")
+</source>
+
+Rezultat:
+
+<pre>
+$ python log.py
+Tworzenie logu w /home/Swaroop/test.log
+</pre>
+
+(Zakładamy, że ten program uruchomiliśmy w Linuxie. W Windowsie ścieżka będzie wyglądać tak: <tt>C:\Users\Swaroop\test.log</tt>)
+
+Zawartość <tt>test.log</tt> powinna wyglądać mniej więcej tak:
+
+<pre>
+2009-09-22 21:11:07,808 : DEBUG : Start programu
+2009-09-22 21:11:07,838 : INFO : Coś się dzieje
+2009-09-22 21:11:07,838 : WARNING : Program padł
+</pre>
+
+Jak to działa:
+
+Użyliśmy trzech modułów z biblioteki standardowej &mdash; modułu <code>os</code> do interakcji z systemem operacyjnym, modułu <code>platform</code> do uzyskiwania informacji o platformie (systemie operacyjnym) oraz modułu <code>logging</code>, aby zapisać nasze informacje w formie [http://pl.wikipedia.org/wiki/Log_%28informatyka%29 logu].
+
+Najpierw ustalamy, z jakim systemem operacyjnym mamy do czynienia, sprawdzając wynik polecenia <code>platform.platform()</code> (dowiesz się więcej, gdy wpiszesz <code>import platform; help(platform)</code>). Jeśli to Windows, sprawdzamy nazwy dysku głównego i folderu domowego, dzięki czemu dostajemy pełny adres miejsca, w którym chcemy zapisać nasz log. W innych systemach operacyjnych w tym celu wystarczy nam znaleźć nazwę folderu domowego.
+
+Używamy funkcji <code>os.path.join</code>, aby połączyć ścieżkę i nazwę pliku logu. Robimy to w ten sposób, zamiast po prostu dodawać nazwy, żeby mieć pewność, że pełna ścieżka będzie się zgadzała z tym, czego oczekuje od nas system.
+
+Konfigurujemy moduł <code>logging</code> w celu zapisania wszystkich wiadomości w specjalnym formacie i do pliku, który sobie wyszczególniliśmy.
+
+Na koniec możemy ustalić wiadomości dotyczące błędów, informacji, ostrzeżeń, a nawet krytycznych zdarzeń. Gdy tylko program został uruchomiony, możemy sprawdzić ten plik i dowiedzieć się, co się działo, mimo, że nic się nie wyświetliło użytkownikowi na ekranie.
+
+==Moduły urllib i json==
+Jak miło by było, gdybyśmy mogli napisać program, który zdobywałby dla nas wyniki przeszukiwania internetu? Zobaczmy.
+
+Możemy to osiągnąć używając dwóch modułów. Pierwszym jest moduł <code>urllib</code>, dzięki któremu możemy uzyskać dostęp do dowolnej strony w internecie. Użyjemy ''Yahoo! Search'' do uzyskania wyników wyszukiwania. Szczęśliwym trafem, uzyskamy od nich wyniki w formacie JSON, który możemy bez problemu przetworzyć dzięki modułowi <code>json</code> z biblioteki standardowej.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: yahoo.py
+
+import sys
+if (sys.version_info[0] != 2) or (sys.version_info[1] < 6):
+    sys.exit('Ten program wymaga Pythona 2.6+!')
+
+import json
+import urllib
+
+# Zdobądź własny APP ID pod adresem http://developer.yahoo.com/wsregapp/
+YAHOO_APP_ID = 'jl22psvV34HELWhdfUJbfDQzlJ2B57KFS_qs4I8D0Wz5U5_yCI1Awv8.lBSfPhwr'
+SEARCH_BASE = 'http://search.yahooapis.com/WebSearchService/V1/webSearch'
+
+class YahooSearchError(Exception):
+    pass
+
+# Wzięte z http://developer.yahoo.com/python/python-json.html
+def search(query, results=20, start=1, **kwargs):
+    kwargs.update({
+        'appid': YAHOO_APP_ID,
+        'query': query,
+        'results': results,
+        'start': start,
+        'output': 'json'
+    })
+    url = SEARCH_BASE + '?' + urllib.urlencode(kwargs)
+    result = json.load(urllib.urlopen(url))
+    if 'Error' in result:
+        raise YahooSearchError(result['Error'])
+    return result['ResultSet']
+ 
+query = raw_input('Co chcesz znaleźć? ')
+for result in search(query)['Result']:
+    print "%s : %s" % (result['Title'].encode('utf-8'), result['Url'])
+</source>
+
+Rezultat:
+
+<pre>
+$ python yahoo.py
+Co chcesz znaleźć? byte of python
+Python - Notes : http://www.byteofpython.info/
+San Diego Zoo's Animal Bytes: Python : http://www.sandiegozoo.org/animalbytes/t-
+python.html
+A Byte of Python : http://www.ibiblio.org/g2swap/byteofpython/read/
+Python en:Table of Contents - Notes : http://www.swaroopch.com/notes/Python_en:T
+able_of_Contents
+Python Byte Solutions - Front Page : http://www.pythonbyte.com/
+A Byte of Python : http://www.thehazeltree.org/byteofpython/index.html
+32.12. dis — Disassembler for Python bytecode — Python v2.6.2 ... : http://docs.
+python.org/lib/bytecodes.html
+Byte-of-Python Info Page : http://lists.ibiblio.org/mailman/listinfo/byte-of-pyt
+hon
+A Byte of Python : http://www.ibiblio.org/swaroopch/byteofpython/files/120/byteo
+fpython_120.pdf
+17.9 compileall -- Byte-compile Python libraries : http://www.python.org/doc/2.1
+/lib/module-compileall.html
+Byte of Python : http://www.linuxac.org/forum/memfiles/byteofpython_arabic.pdf
+ANIMAL BYTES - Burmese Python : http://www.seaworld.org/animal-info/animal-bytes
+/animalia/eumetazoa/coelomates/deuterostomes/chordata/craniata/reptilia/squamata
+/burmese-python.htm
+A Byte of Python : http://www.dpawson.co.uk/bop.html
+A Byte of Python : http://www.colorado.edu/geography/class_homepages/geog_4303_f
+08/readings/Swaroop.CH--A_byte_of_python_115.pdf
+18.9 compileall -- Byte-compile Python libraries : http://pythonlib.pergamen.hu/
+html/lib/module-compileall.html
+Byte of Python : http://www.scribd.com/doc/19114571/Byte-of-Python
+A light byte of Python : http://timgolden.me.uk/python/iet-talk
+compileall --- Byte-compile Python libraries — Python ... : http://iorich.caltec
+h.edu/~t/transfer/python-trunk-doc/library/compileall.html
+Byte of Python | dgplug : http://dgplug.org/intro/?q=byteofpython
+"Byte of Python" Updated! : http://pramode.net/2008/09/05/byte-of-python-updated
+/
+</pre>
+
+Jak to działa:
+
+Możemy uzyskać wyniki wyszukiwania z konkretnej strony poprzez podanie w odpowiednim formacie tekstu do wyszukania. Musimy podać wiele opcji, które łączymy używając formatu <tt>klucz1=wartość1&klucz2=wartość2</tt> za pomocą funkcji <code>urllib.urlencode</code>.
+
+Więc, na przykład otwórz [http://search.yahooapis.com/WebSearchService/V1/webSearch?query=byte+of+python&appid=jl22psvV34HELWhdfUJbfDQzlJ2B57KFS_qs4I8D0Wz5U5_yCI1Awv8.lBSfPhwr&results=20&start=1&output=json ten link], a zobaczysz20 wyników dla zapytania &bdquo;byte of python&rdquo;. Poprosiliśmy o wynik w formacie JSON.
+
+Łączymy się z tym URL przy użyciu funkcji <code>urllib.urlopen</code>, po czym wynik przesyłamy do funkcji <code>json.load</code>, która go odczytuje i przekształca w obiekt Pythona. Na koniec używamy pętli, aby wyświetlić użytkownikowi rezultat naszego wyszukiwania.
+
+==Serie &bdquo;Module of the Week&rdquo;==
+Do poznania jest jeszcze mnóstwo zagadnień, takich jak debugowanie, manipulowanie opcjami linii komend, wyrażenia regularne i wiele innych.
+
+Najlepszym sposobem dalszego poznawania biblioteki standardowej jest czytanie wspaniałych serii Douga Hellmanna [http://www.doughellmann.com/projects/PyMOTW/ &bdquo;Python Module of the Week&rdquo;] (strona w jęz. angielskim).
+
+==Podsumowanie==
+Poznaliśmy część możliwości biblioteki standardowej Pythona. Radzę ci wczytać się w jej pełną [http://docs.python.org/library/index.html dokumentację], żeby poznać resztę modułów i ich zastosowanie.
+
+W następnej części zajmiemy się różnymi aspektami Pythona, które sprawią, że nasza wycieczka po zakamarkach tego języka będzie bardziej kompletna.
+
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wyjątki|Wyjątki]]|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|}}

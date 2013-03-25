@@ -1,0 +1,170 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|[[Ukąś Pythona/Wyjątki|Wyjątki]]|}}
+
+==Wprowadzenie==
+Twój program, jeśli ma robić coś użytecznego, zazwyczaj musi komunikować się z użytkownikiem. Na przykład, na podstawie wprowadzonych przez użytkownika danych program wykonuje pewne obliczenia i następnie wypisuje wynik, przekazując go tym samym użytkownikowi. Te działania można wykonać przy użyciu funkcji <code>raw_input</code> i wyrażenia <code>print</code>.
+
+Formatowanie danych, czyli szczegóły konwersji różnych zmiennych na tekst, można wykonać używając różne metody klasy <code>str</code>.
+Na przykład, wyrównanie do prawej i dopełnienie z lewej strony spacjami można wykonać używając <code>str.rjust</code>. Opis całej plejady różnych funkcji formatujących jest dostępny przez <code>help(str)</code>.
+
+Komunikacja z otoczeniem, czyli wejście/wyjście, to często praca z plikami na dysku. Tworzenie plików, odczytywanie i zmiana ich zawartości to podstawowe narzędzie, które zostanie przedstawione w tym rozdziale.
+
+==Wprowadzanie danych przez użytkownika==
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: user_input.py
+
+def reversed(text):
+    return text[::-1]
+
+def palindrom(text):
+    return text == reversed(text)
+
+napis = raw_input('Wprowadź napis: ')
+if palindrom(napis):
+    print "Tak, to palindrom"
+else:
+    print "Nie, to zwykłe słowo"
+</source>
+
+Rezultat:
+
+<pre>
+$ python user_input.py
+Wprowadź napis: abrakadabra
+Nie, to zwykłe słowo
+
+$ python user_input.py
+Wprowadź napis: kajak
+Tak, to palindrom
+
+$ python user_input.py
+Wprowadź napis: 1234321
+Tak, to palindrom
+</pre>
+
+Jak to działa:
+
+Funkcja <code>reversed</code> zwraca swój argument w odwrotnej kolejności wykorzystując zaawansowane indeksowanie.
+Poprzednio była mowa o indeksowaniu z dwoma argumentami <code>[a:b]</code> &mdash; czyli braniu podsekwencji od pozycji <code>a</code> do pozycji <code>b</code>.
+
+Tutaj pierwsze dwa parametry są pomięte, czyli przyjmują wartości domyślne. Jako trzeci parametr, czyli krok, podajemy -1.
+Ujemny krok oznacza przejście od końca do początku, w ten sposób otrzymujemy sekwencję w odwrotnej kolejności.
+
+Zobacz, że argumenty indeksowania i argumenty funkcji
+<code>range</code> używanej do indeksowania (zob. [[Ukąś_Pythona/Kontrola_przepływu#Pętla_for]]) są bardzo podobne.
+
+Funkcja <code>raw_input</code> używa podanego argumentu jako zachęty dla użytkownika i czeka na jego odpowiedź. Po tym użytkownik coś wpisze, a tak naprawdę po tym jak naciśnie klawisz Enter, funkcja <code>raw_input</code> kończy swoje działanie i zwraca wpisany tekst.
+
+Program porównuje wpisany tekst z jego odwrotnością. Porównywanie sekwencji oznacza przyrównanie ich element po elemencie, czyli w tym wypadku litera po literze. W wypadku gdy porównanie nie znalazło różnic, możemy oznajmić, że tekst jest [http://pl.wiktionary.org/wiki/palindrom słowem lustrzanym].
+
+<!-- praca domowa pominięta -->
+
+==Pliki==
+Dostęp do plików na dysku uzyskuje się w Pythonie poprzez klasę <code>file</code>, która reprezentuje otwarty plik. Plik otwieramy wywołując funkcję <code>open</code> podając nazwę pliku. Otwarcie pliku oznacza, że system operacyjny zezwolił nam na dostęp do niego, i możemy wykonywać operacje odczytu i zapisu.
+
+Przykład:
+
+<source lang='py'>
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: pliki.py
+
+wierszyk = '''\
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+    use Python!
+'''
+
+f1 = open('wierszyk.txt', 'w') 
+                # 'w' oznacza, że będziemy pisać do pliku
+f1.write(wierszyk)
+f1.flush()       # 'wypchnięcie' zmian do pliku
+
+f2 = open('wierszyk.txt')
+                # brak drugiego argumentu oznacza 'tylko odczyt'
+for wers in f2:
+    print wers,
+</source>
+
+Rezultat:
+
+<pre>
+$ python pliki.py
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+    use Python!
+</pre>
+
+Jak to działa:
+
+Tworzymy plik <tt>wierszyk.txt</tt> otwierając go w trybie do zapisu (z argumentem <code>'w'</code>). Jeśli plik jeszcze nie istniał, to zostaje stworzony pusty, a jeśli już istniał, to jego zawartość zostaje wykasowana w momencie otwarcia.
+Do tego pliku zapisujemy nasz wierszyk jako treść.
+
+Następnie otwieramy ten sam plik ponownie, tym razem w trybie do odczytu. Następnie linijka po linijce odczytujemy plik i wypisujemy każdą linijkę.
+
+Program jest bardzo prosty, ale jest tu parę drobiazgów na które warto zwrócić uwagę:
+# Zmienna <code>wierszyk</code> jest wielolinijkowym ciągiem znaków stworzonym przez użycie potrójnego apostrofu, <nowiki>'''</nowiki>, jako ogranicznika.
+# Bezpośrednio po otwarciu tego napisu jest użyta kontynuacja linii '\', po to, by napis miał naturalne wcięcia (czyli ich brak). Gdyby znaku kontynuacji nie było, napis zawierałby dodatkową pustą linjkę na samym początku.
+# Po zapisaniu zmian 'wypychamy' je na dysk przez użycie metody <code>flush</code>. Normalnie operacje na plikach są wykonywane dopiero wtedy, gdy uzbiera się ich większa ilość. Niemniej, tutaj zaraz chcemy zacząć odczytywać ten plik i musimy się upewnić, że nasze zmiany naprawdę znalazły się w pliku zanim zaczniemy czytać ten plik.
+# Iteracja po obiekcie <code>file</code> oznacza iterację po linijkach, co tutaj wykorzystujemy.
+# Każda linijka (zmienna <code>wers</code>) jest zakończona swoim znakiem nowej linii i dlatego wywołujemy <code>print</code> tak, by nie dodało nowego znaku końca linii, czyli z ',' na końcu.
+# Gdybyśmy nie wywołali <code>flush</code>, to zmiany w pliku i tak zostałyby zapisane automatycznie najpóźniej w momencie zakończenia programu. Gdy program kończy swoje działanie, wszystkie zmiany są zapisywane i pliki są zamykane przez system operacyjny.
+
+==Pickle==
+Standardowa biblioteka Pythona zawiera moduł <code>pickle</code>. Służy on do zapisywania dowolnych obiektów Pythona w pliku, i&nbsp;odwrotnie, do późniejszego oczytywania i rekreacji obiektów.
+W języku angielskim mówi się o ''persistent storage'', by podkreślić, że obiekty są zachowane w sposób trwały, w przeciwieństwie do obiektów w programie, które znikają po jego zakończeniu.
+
+Przykład:
+
+<source lang='py'>
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: pickling.py
+
+import pickle
+ 
+# the name of the file where we will store the object
+trwala_lista_zakupow = 'lista_zakupow.data'
+# lista rzeczy do kupienia
+lista_zakupow = ['jabłka', 'ziemniaki', 'pomidory']
+
+# zapisanie do pliku
+f = open(trwala_lista_zakupow, 'wb')
+pickle.dump(lista_zakupow, f)
+f.close()
+ 
+# usunięcie zmiennej 'nie-trwałej'
+del lista_zakupow
+
+# odzyskanie zmiennej
+f = open(trwala_lista_zakupow, 'rb')
+lista_zakupow = pickle.load(f)
+for rzecz in lista_zakupow:
+  print rzecz
+<!-- pętla for bo rep(list) nie wypisuje polskich znaczków -->
+</source>
+
+<pre>
+$ python pickling.py
+jabłka
+ziemniaki
+pomidory
+</pre>
+
+Jak to działa:
+
+Aby zapisać dane 'zakonserwowane' do pliku, otwieramy plik w trybie do zapisu. Parametr 'wb' oznacza ''write''&ndash;''binary'', czyli dodatkowo mówimy, że dane mają być zapisane do pliku dokładnie w sposób przekazany do zapisania. W przypadku wersji Python 2.x brak tego parametru nie ma znaczenia, ale nie szkodzi. Natomiast w nowszych wersjach Pythona (3.x), jest on potrzebny. Właściwego zapisu dokonujemy funkcją <code>pickle.dump</code> 
+
+Aby odczytać dane 'zakonserwowane' z pliku, otwieramy plik w trybie do odczytu. Funkcja <code>pickle.load</code> pozwala nam odczytać dokładnie to co zapisaliśmy.
+
+==Podsumowanie==
+Przedstawione zostały różne rodzaje tzw. wejścia i wyjścia, czyli komunikacji programu z otoczeniem &mdash; komunikacja interaktywna z użytkownikiem, zapisywanie i odczytywanie plików, oraz przechowywanie obiektów w pliku, czyli ''picklowanie''.
+
+Następne w kolejności są wyjątki. 
+
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|[[Ukąś Pythona/Wyjątki|Wyjątki]]|}}

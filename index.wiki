@@ -1,0 +1,46 @@
+__NOTOC__
+[[Kategoria:Programowanie]]
+
+== Przedwstęp ==
+Wiki to służy ułatwieniu i koordynacji tłumaczenia książki [http://www.swaroopch.com/notes/Python Byte of Python] na język polski. W chwili obecnej tłumaczenie jest zakończone, natomiast w toku są prace korektorskie. Książka z założenia ma być hybrydowym tłumaczeniem Byte of Python v1.20 dot. Pythona 2.x i najnowszej wersji Byte of Python, traktującej o Pythonie 3.0, ze względu na pragnienie tłumaczy zgodności z obecnie używanym Pythonem 2.x oraz lepsze walory dydaktyczne nowej wersji oryginału.
+
+== Opis ==
+Książka ta nauczy Cię programować w języku Python niezależnie od tego, czy jesteś początkującym komputerowcem, czy też zaawansowanym programistą. Zaczynamy!
+
+== Spis treści ==
+# [[Ukąś Pythona/Wstęp|Wstęp]]
+# [[Ukąś Pythona/Wprowadzenie|Wprowadzenie]]
+# [[Ukąś Pythona/Instalowanie Pythona|Instalowanie Pythona]]
+# [[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]
+# [[Ukąś Pythona/Podstawy|Podstawy]]
+# [[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]
+# [[Ukąś Pythona/Kontrola przepływu|Kontrola przepływu]]
+# [[Ukąś Pythona/Funkcje|Funkcje]]
+# [[Ukąś Pythona/Moduły|Moduły]]
+# [[Ukąś Pythona/Struktury danych|Struktury danych]]
+# [[Ukąś Pythona/Rozwiązywanie problemów|Rozwiązywanie problemów]]
+# [[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]
+# [[Ukąś Pythona/Wejście-Wyjście|Wejście-Wyjście]]
+# [[Ukąś Pythona/Wyjątki|Wyjątki]]
+# [[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]
+# [[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]
+# [[Ukąś Pythona/Co dalej?|Co dalej?]]
+# [[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]
+# [[Ukąś Pythona/Dodatek: O książce i autorze|Dodatek: O książce i autorze]]
+# [[Ukąś Pythona/Dodatek: Historia wersji|Dodatek: Historia wersji]]
+
+== Autor i Licencja ==
+Autorem podręcznika jest [http://www.swaroopch.com/about/ Swaroop C H].
+
+Tłumacze: [[Dominik Kozaczko]] (VLO), [[Andrzej Klimurczyk]] (VLO), [[Bartosz Brachaczek]] (VLO) oraz [[Użytkownik:ZbySz|Zbigniew Jędrzejewski-Szmek]] (UW).
+
+Licencja: [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Uznanie autorstwa-Na tych samych zasadach 3.0]
+
+== Do zrobienia ==
+* korekta
+* ujednolicenie stylu
+* uzupełnienie braków względem starego BoP (np. sekcja o krotkach formatujących wyjście w <code>print</code>)
+
+== Wersje pochodne ==
+Niniejsze tłumaczenie posłużyło jako baza dla następujących publikacji:
+* "[http://bci.fuw.edu.pl/edu/TI:Programowanie_z_Pythonem Programowanie z Pythonem]" - Skrypt dla I roku neuroinformatyki i fizyki medycznej na Wydziale Fizyki Uniwersytetu Warszawskiego;

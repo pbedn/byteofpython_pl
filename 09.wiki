@@ -1,0 +1,278 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Funkcje|Funkcje]]|[[Ukąś Pythona/Struktury danych|Struktury danych]]|}}
+
+==Wprowadzenie==
+Dowiedziałeś się, jak używać wielokrotnie fragmentu kodu programu dzięki funkcjom. A czego użyć, gdybyś chciał używać wielokrotnie paru funkcji w innych programach, które piszesz? Jak pewnie zgadłeś, odpowiedzią są moduły.
+
+Są różne metody pisania modułów, ale najprościej jest stworzyć plik z rozszerzeniem <tt>.py</tt>, który będzie zawierał funkcje i zmienne.
+
+Moduły można pisać nie tylko w Pythonie. Na przykład możesz napisać moduł do wydajnych obliczeń numerycznych w bardziej wydajnym języku [http://pl.wikipedia.org/wiki/C_(Język_programowania) C]
+i po skompilowaniu używać go w swoim pythonowym kodzie.
+
+Aby użyć zawartości modułu, należy go ''zaimportować''. Dotyczy to również modułów ze standardowej biblioteki Pythona, od czego właśnie zaczniemy.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: uzycie_sys.py
+
+import sys
+
+print 'Polecenia linii komend to:'
+for i in sys.argv:
+    print i
+
+print '\n\nPYTHONPATH to:',sys.path,'\n'
+</source>
+
+Rezultat:
+
+<pre>
+$ python uzycie_sys.py my jestesmy argumentami
+Polecenia linii komend to:
+uzycie_sys.py
+my
+jestesmy
+argumentami
+
+
+PYTHONPATH to: ['/home/Swaroop', '/usr/lib/python25.zip', '/usr/lib/python2.5', 
+'/usr/lib/python2.5/plat-linux2', '/usr/lib/python2.5/lib-tk', '/usr/lib/python2
+.5/lib-dynload', '/usr/local/lib/python2.5/site-packages', '/usr/lib/python2.5/s
+ite-packages', '/usr/lib/python2.5/site-packages/Numeric', '/usr/lib/python2.5/s
+ite-packages/PIL', '/usr/lib/python2.5/site-packages/gst-0.10', '/var/lib/python
+-support/python2.5', '/usr/lib/python2.5/site-packages/gtk-2.0', '/var/lib/pytho
+n-support/python2.5/gtk-2.0']
+
+</pre>
+
+PYTHONPATH to lista katalogów w których Python poszukuje modułów.
+
+Jak to działa:
+
+Najpierw ''importujemy'' moduł <code>sys</code> używając wyrażenia <code>import sys</code>, czyli po prostu mówimy Pythonowi, że chcemy go używać. Moduł <code>sys</code> zawiera polecenia związane z Pythonem i jego środowiskiem, czyli ''sys''temem.
+
+Podczas wykonywania wyrażenia <code>import sys</code> Python szuka pliku lub katalogu o odpowiedniej nazwie (m.in. zaczynającej się od <tt>sys</tt>). Aby operacja się powiodła, moduł musi być w jednym z katalogów w zmiennej <code>sys.path</code>.
+
+Gdy moduł zostaje znaleziony, jego treść zostaje wykonana, a sam moduł staje się dostępny pod swoją nazwą. Inicjalizacja każdego modułu następuje tylko raz, podczas jego pierwszego użycia w danym programie.
+
+Zmienna <code>argv</code> w module <code>sys</code> jest dostępna dzięki użyciu zapisu z kropką (<code>sys.argv</code>), dzięki czemu wiadomo, że ta nazwa jest częścią modułu <code>sys</code>. Zaletą tej notacji jest to, że programista na pierwszy rzut oka wie o która zmienną chodzi. Kolejną zaletą jest to, że możemy mieć wiele zmiennych <code>argv</code> w różnych modułach, i jednoznacznie się do niech odwoływać. Dzięki wykorzystaniu notacji z kropką, nazwa nie będzie się gryźć innymi zmiennymi.
+
+Zmienna <code>sys.argv</code> jest ''listą'' ciągów znaków. (Listy poznamy dokładniej w [[Ukąś Pythona/Struktury danych#Lista|następnym rozdziale]].) Dokładniej mówiąc, zawiera listę ''argumentów z którymi program został wywołany'', czyli nazwę pliku zawierającego program oraz to co użytkownik programu wpisał po nazwie w wywołaniu z wiersza poleceń.
+
+: Jeżeli używasz IDE do pisania i uruchamiania tych programów, poszukaj w menu sposobu wpisywania argumentów linii komend.
+
+Gdy wpisujemy <code>python uzycie_sys.py my jestesmy argumentami</code>, uruchamiamy moduł <tt>uzycie_sys.py</tt> za pomocą aplikacji <tt>python</tt> wraz z argumentami <tt>my jestesmy argumentami</tt>. Python przechowuje dla nas treść linii komend w zmiennej <code>sys.argv</code>.
+
+Pamiętaj, że nazwa uruchamianego skryptu jest zawsze na początku listy <code>sys.argv</code>. Dlatego teraz mamy oznaczone: <code>uzycie_sys.py</code> jako <code>sys.argv[0]</code>, <code>my</code> jako <code>sys.argv[1]</code>, <code>jestesmy</code> jako <code>sys.argv[2]</code> oraz <code>argumentami</code> jako <code>sys.argv[3]</code>. Zauważ, że Python numeruje od 0, nie od 1.
+
+<code>sys.path</code> zawiera listę katalogów, z których są importowane moduły. Zobacz, że pierwsza pozycja to folder, w którym został uruchomiony program. Folder w którym został uruchomiony program zostaje automatycznie wstawiony na początek listy, natomiast pozostałe jej elementy są takie same niezależnie od miejsca wywołania.
+Oznacza to, że możesz łatwo importować moduły znajdujące się w katalogu, w którym jesteś. Inne moduły są dostępne tylko w wypadku gdy znajdują się w którymś z pozostałych wymienionych katalogów.
+
+Przy okazji, możesz w każdej chwili podejrzeć katalog, w którym jesteś wpisując w Pythonie <code>print os.getcwd()</code> (oczywiście najpierw musisz zaimportować moduł <code>os</code>).
+
+==Pliki pośrednie .pyc==
+Importowanie modułu to dosyć czasochłonna operacja, więc Python używa pewnych sztuczek, aby ją przyspieszyć. Jedną z nich jest tworzenie skompilowanych plików z rozszerzeniem <tt>.pyc</tt>, które są formą pośrednią przetwarzania programu (pamiętasz sekcję [[Ukąś Pythona/Wprowadzenie|Wprowadzenie]] z opisem działania Pythona?). Taki plik <tt>.pyc</tt> jest przydatny, gdy masz zamiar zaimportować dany moduł po raz kolejny, używając innego programu &mdash; będzie o wiele szybciej, gdyż część pracy potrzebnej do zaimportowania została już wykonana. Poza tym, pliki <tt>.pyc</tt> są niezależne od platformy.
+
+;Uwaga
+: Pliki <tt>.pyc</tt> są zazwyczaj tworzone w tym samym folderze, co odpowiednie pliki <tt>.py</tt>. Jeżeli Python nie ma pozwolenia na zapis w tym folderze, pliki <tt>.pyc</tt> nie zostaną utworzone.
+
+==Konstrukcja from ... import ...==
+Jeżeli chcesz bezpośrednio zaimportować zmienną <code>argv</code> do swojego programu (aby nie pisać ciągle <tt>sys.</tt>), możesz użyć wyrażenia <code>from sys import argv</code>. Jeżeli chcesz zaimportować wszystko, co znajduje się w module <code>sys</code>, możesz użyć wyrażenia <code>from sys import *</code>. To działa z każdym modułem.
+
+Tak naprawdę, powinieneś normalnie używać formy <tt>import ...</tt>,
+i odwoływać się do zmiennych z innych modułów przez nazwę ich modułu.
+Formy <tt>from...import...</tt> powinieneś używać wtedy, gdy dana nazwa będzie używana bardzo często i kłopotliwe byłoby używanie pełnej ścieżki. Formy z gwiazdką
+nie powinieneś używać w programach, bo powoduje zaśmiecenie przestrzeni nazw.
+Niemniej jest ona użyteczna w trybie interaktywnym, gdzie naprawdę nie chcemy pisać długich nazw.
+
+==Identyfikacja modułu==
+Każdy moduł posiada zmienną zawierającą jego nazwę (zazwyczaj). Najczęściej używa się tej zmiennej wtedy,
+gdy chcemy się dowiedzieć, czy moduł został zaimportowany, czy uruchomiony jako program. Jak już wcześniej wspomniano, gdy moduł zostaje zaimportowany po raz pierwszy, jego kod zostaje wykonany. W przypadku definicji funkcji i klas ich wykonanie oznacza po prostu zdefiniowanie tych funkcji i klas. Polecenia zapisane w treści funkcji nie zostają wykonane w momencie ''definicji'' funkcji, lecz dopiero później, w momencie ''wywołania'' funkcji. Podobnie jest dla klas, czyli definicja klasy nie powoduje stworzenia obiektu.
+Natomiast wyrażenia znajdujące się poza definicjami funkcji i klasy zostają wykonane od razu.
+Często chcemy, by zostałe one wykonane tylko wtedy, gdy uruchamiamy moduł jako program.
+
+Zmienna <code>__name__</code> zawiera nazwę modułu. Wyjątkiem jest sytuacja gdy został on uruchomiony samodzielnie, jako program. Wówczas zawiera napis <code>'__main__'</code>.
+Dzięki temu możemy rozróżnić dwa sposoby wywołania modułu i podjąć odpowiednie decyzje.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: nazwa.py
+
+if __name__ == '__main__':
+    print 'Ten program jest uruchomiony samodzielnie.'
+else:
+    print 'Zostałem zaimportowany z innego modułu.'
+</source>
+
+Rezultat:
+
+<pre>
+$ python nazwa.py
+Ten program jest uruchomiony samodzielnie.
+
+$ python
+>>> import nazwa
+Zostałem zaimportowany z innego modułu.
+>>>
+</pre>
+
+Jak to działa:
+
+Każdy moduł Pythona ma zdefiniowaną własną nazwę. Jeżeli jest nią <code>'__main__'</code>, oznacza to, że moduł działa samodzielnie, a wtedy możemy podjąć odpowiednie działania.
+
+==Tworzenie własnych modułów==
+Tworzenie własnych modułów jest proste, robisz to cały czas! A to dlatego, że każdy program w Pythonie jest także modułem. Ty musisz tylko zadbać, żeby miał rozszerzenie <tt>.py</tt>. Ten przykład powinien wszystko wyjaśnić.
+
+Przykład<nowiki>:</nowiki>
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: mojmodul.py
+
+def mowczesc():
+    print 'Cześć, tu mówi mojmodul.'
+
+__version__ = '0.1'
+
+# Koniec modułu mojmodul.py.
+</source>
+
+Oto przykładowy moduł. Jak widać, nie ma tu nic szczególnie różniącego go od zwykłego programu w Pythonie. Następnie zobaczymy, jak go użyć w innych naszych programach.
+
+Pamiętaj, że moduł powinien być umieszczony w tym samym katalogu co program, który z niego korzysta, lub też w jednym z katalogów wpisanych w <code>sys.path</code>.
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: mojmodul_demo.py
+
+import mojmodul
+
+mojmodul.mowczesc()
+print 'Wersja', mojmodul.__version__
+</source>
+
+Rezultat<nowiki>:</nowiki>
+
+<pre>
+$ python mojmodul_demo.py
+Cześć, tu mówi mojmodul.
+Wersja 0.1
+</pre>
+
+Jak to działa:
+
+Zauważ, że używamy tego samego zapisu z kropkami przy uzyskiwaniu dostępu do elementów modułu. Python robi dobry użytek z tej samej notacji nadając temu swoisty &bdquo;pythonowy&rdquo; styl, dzięki czemu nie musimy wciąż poznawać coraz to nowych metod pracy.
+
+Oto wersja z użyciem <tt>from...import...</tt>:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: mojmodul_demo2.py
+
+from mojmodul import mowczesc, __version__
+
+mowczesc()
+print 'Wersja', __version__
+</source>
+
+Rezultat <tt>mojmodul_demo2.py</tt> jest taki sam jak <tt>mojmodul_demo.py</tt>.
+
+Zauważ, że jeżeli nazwa <code>__version__</code> już istniała wcześniej w module, który importuje <code>mojmodul</code>, powstaną zgrzyty. Szczególnie, że powszechne jest zjawisko podawania wersji modułu właśnie za pomocą tej nazwy. Stąd zawsze lepiej użyć wyrażenia <code>import</code>, nawet gdy miałoby to wydłużyć program.
+
+Możesz także użyć:
+
+<source lang="py">
+from mojmodul import *
+</source>
+
+To spowoduje zaimportowanie prawie wszystkich nazw, jak na przykład <code>mowczesc</code>, ale ominie <code>__version__</code>, gdyż zaczyna się ona od podwójnego podkreślenia.
+
+==Funkcja dir==
+Możesz użyć wbudowanej funkcji <code>dir</code>, aby wypisać identyfikatory zdefiniowane przez dany obiekt. Na przykład w module identyfikatorami są funkcje, klasy i zmienne w nim zadeklarowane.
+
+Kiedy dołożysz nazwę modułu do <code>dir()</code>, zwróci ona listę nazw zawartych w podanym module. Gdy nie zostanie podany argument, zwrócona zostanie lista nazw zdefiniowanych w aktualnym module.
+
+Przykład<nowiki>:</nowiki>
+
+<source lang="py">
+$ python
+
+>>> import sys # Zdobądź listę atrybutów, w tym wypadku dla modułu sys.
+>>> dir(sys)
+['__displayhook__', '__doc__', '__excepthook__', '__name__', '__package__', '__s
+tderr__', '__stdin__', '__stdout__', '_clear_type_cache', '_current_frames', '_g
+etframe', 'api_version', 'argv', 'builtin_module_names', 'byteorder', 'call_trac
+ing', 'callstats', 'copyright', 'displayhook', 'dont_write_bytecode', 'exc_clear
+', 'exc_info', 'exc_type', 'excepthook', 'exec_prefix', 'executable', 'exit', 'f
+lags', 'float_info', 'getcheckinterval', 'getdefaultencoding', 'getdlopenflags',
+ 'getfilesystemencoding', 'getprofile', 'getrecursionlimit', 'getrefcount', 'get
+sizeof', 'gettrace', 'hexversion', 'maxint', 'maxsize', 'maxunicode', 'meta_path
+', 'modules', 'path', 'path_hooks', 'path_importer_cache', 'platform', 'prefix',
+ 'ps1', 'ps2', 'py3kwarning', 'pydebug', 'setcheckinterval', 'setdlopenflags', '
+setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout', 'subv
+ersion', 'version', 'version_info', 'warnoptions']
+>>> dir() # Zdobądź listę atrybutów dla aktualnego modułu.
+['__builtins__', '__doc__', '__name__', '__package__', 'sys']
+>>> a = 5 # Stwórz nową zmienną "a".
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'a', 'sys']
+>>> del a # Usuń nazwę.
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'sys']
+>>>
+</source>
+
+Jak to działa:
+
+Na początku sprawdzamy działanie <code>dir</code> na zaimportowanym module <code>sys</code>. Widać ogromną listę atrybutów, które zawiera.
+
+Następnie używamy funkcji <code>dir</code> bez parametrów. Domyślnie zwraca ona listę atrybutów aktualnego modułu. Zauważ, że lista zaimportowanych modułów jest też częścią wyniku.
+
+W celu ujrzenia <code>dir</code> w akcji, deklarujmy nową zmienną <code>a</code>, przypisujemy jej wartość, a następnie sprawdzamy, że na liście pojawiła nazwa naszej nowej zmiennej. Usuwamy ją poleceniem <code>del</code>, czego efekt widać po kolejnym użyciu <code>dir</code>.
+
+Uwaga do <code>del</code> &mdash; to polecenie ''usuwa'' zmienną/nazwę (w tym wypadku <code>del a</code>), dzięki czemu później nie da się odnieść do tej nazwy, tak jakby nigdy wcześniej nie istniała.
+
+Pamiętaj, że funkcja <code>dir</code> działa z ''każdym'' obiektem. Na przykład możesz napisać <code>dir(max)</code>, aby poznać atrybuty funkcji <code>max</code>, albo <code>dir(str)</code>, aby poznać atrybuty klasy <code>str</code>.
+
+==Paczki==
+Właśnie zacząłeś dogłębnie poznawać hierarchię elementów twoich programów. Zmienne zazwyczaj znajdują się w funkcjach. Funkcje oraz zmienne globalne &mdash; w modułach. A co gdy chcesz zarządzać modułami? W tym miejscu na scenę wkraczają paczki.
+
+Paczki to katalogi z modułami oraz ze specjalnym plikiem <tt>__init__.py</tt>, który informuje Pythona, że ten katalog jest specjalnie przeznaczony właśnie do przechowywania modułów.
+
+Powiedzmy, że chcesz stworzyć paczkę o nazwie <tt>swiat</tt> zawierającą paczki <tt>azja</tt>, <tt>afryka</tt> itd., zaś w nich na przykład <tt>indie</tt> czy <tt>madagaskar</tt>.
+
+Oto, jak powinna wyglądać twoja struktura katalogów<nowiki>:</nowiki>
+
+<pre>
+- <jakiś katalog wymieniony w sys.path>/
+    - swiat/
+        - __init__.py
+        - azja/
+            - __init__.py
+            - indie/
+                - __init__.py
+                - foo.py
+        - afryka/
+            - __init__.py
+            - madagaskar/
+                - __init__.py
+                - bar.py
+</pre>
+
+Paczki są wygodnym sposobem segregacji modułów. Zobaczysz wiele przykładów ich użycia w [[Ukąś Pythona/Biblioteka standardowa|bibliotece standardowej]].
+
+==Podsumowanie==
+Tak jak funkcje są częściami programu wielokrotnego użytku, tak moduły to programy wielokrotnego użytku. Paczki są odrębną hierarchią organizacji modułów. Standardowa biblioteka Pythona jest przykładem zestawu paczek i modułów.
+
+Zobaczyliśmy, jak użyć tych modułów i utworzyć swoje własne.
+
+Następnie poznamy pewne interesujące koncepty zwane strukturami danych.
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Funkcje|Funkcje]]|[[Ukąś Pythona/Struktury danych|Struktury danych]]|}}

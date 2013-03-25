@@ -1,0 +1,332 @@
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Kontrola przepływu|Kontrola przepływu]]|[[Ukąś Pythona/Moduły|Moduły]]|}}
+
+==Wprowadzenie==
+Funkcje to części programu wielokrotnego użytku. Pozwalają nam nadać nazwę blokowi wyrażeń, a następnie uruchamiać ten blok używając tej nazwy gdziekolwiek w programie, dowolną ilość razy. Taka operacja nazywa się ''wywoływanie funkcji''. Już wcześniej używaliśmy wielu wbudowanych funkcji, jak <code>len</code> lub <code>range</code>.
+
+Funkcje są prawdopodobnie ''najważniejszą'' częścią każdego poważnego programu (w każdym języku programowania), więc w tym rozdziale zbadamy różne aspekty funkcji.
+
+Funkcje definiuje się używając słowa <code>def</code>. Po nim następuje nazwa ''identyfikująca'' funkcję, następnie para nawiasów, które mogą zawierać kilka nazw zmiennych, a na końcu dwukropek. Poniżej zaczyna się blok wyrażeń, które są częścią tej funkcji. Przykład pokaże, że tak naprawdę to bardzo proste:
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: funkcja1.py
+
+def powiedzAhoj():
+    print 'Ahoj, przygodo!' # Blok należący do funkcji.
+# Koniec funkcji.
+
+powiedzAhoj() # Wywołanie funkcji.
+powiedzAhoj() # Ponowne wywołanie funkcji.
+</source>
+
+Rezultat:
+
+<pre>
+$ python funkcja1.py
+Ahoj, przygodo!
+Ahoj, przygodo!
+</pre>
+
+Jak to działa:
+
+Definiujemy funkcję <code>powiedzAhoj</code> używając składni pokazanej powyżej. Ta funkcja nie wymaga żadnych parametrów i w związku z tym nie ma żadnych zmiennych zadeklarowanych w nawiasach. Parametry funkcji są wkładane do niej podczas wywoływania, więc możemy wprowadzać do niej różne wartości i uzyskiwać odpowiednie wyniki.
+
+Zauważ, że możemy wywołać tę samą funkcję dwukrotnie, co oznacza, ze nie musimy dwa razy pisać tego samego kodu.
+
+==Parametry funkcji==
+Funkcja może posiadać parametry, czyli wartości, które dostarczasz do niej. Dlatego funkcja może ''coś zrobić'' z tymi wartościami. Parametry są podobne do zmiennych, różnią sie jedynie tym, że przypisywanie wartości następuje podczas wywoływania funkcji, a użyte do tego wartości są już wcześniej przypisane do jakichś zmiennych w programie.
+
+Parametry deklarujemy w nawiasach przy definiowaniu funkcji i oddzielamy przecinkami. Podczas wywoływania funkcji przypisujemy im wartości w ten sam sposób. Zauważ, że to, co wpisujemy podczas definiowania funkcji to ''parametry'', zaś przypisywane im wartości to ''argumenty''.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_param.py
+
+def wypiszMax(a, b):
+    if a > b:
+        print a, 'to maksimum'
+    elif a == b:
+        print a, 'jest równe', b
+    else:
+        print b, 'to maksimum'
+
+wypiszMax(3, 4) # Wartości są wprowadzone bezpośrednio.
+
+x = 5
+y = 7
+
+wypiszMax(x, y) # Zmienne stają się argumentami.
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_param.py
+4 to maksimum
+7 to maksimum
+</pre>
+
+Jak to działa:
+
+Definiujemy tutaj funkcję <code>wypiszMax</code>, w której wypisujemy na ekran największą z liczb <code>a</code> i <code>b</code> za pomocą prostej kombinacji <tt>if...elif...else</tt>.
+
+Podczas pierwszego uruchomienia <code>wypiszMax</code> dostarczamy bezpośrednio wartości do parametrów (czyli argumenty). Za drugim razem wywołujemy ją używając dwóch zmiennych. Linijka <code>wypiszMax</code> sprawia, że wartość argumentu <code>x</code> zostaje przekazana parametrowi <code>a</code>, a wartość argumentu <code>y</code> parametrowi <code>b</code>. W obu przypadkach funkcja działa tak samo.
+
+==Zmienne lokalne==
+Gdy deklarujesz zmienne w definicji funkcji, nie są one połączone w żaden sposób z innymi zmiennymi o tych samych nazwach, ale użytych w innej części programu. Innymi słowy, te zmienne są ''lokalne'' dla tej funkcji. To nazywa się ''zakres'' parametru. Każda zmienna ma swój zakres, czyli blok, w którym została zadeklarowana, zaczynając od miejsca zdefiniowania jej nazwy.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_lokal.py
+
+x = 50
+
+def f(x):
+    print 'x wynosi', x
+    x = 2
+    print 'Zmieniono lokalne x na', x
+
+f(x)
+print 'x wynosi nadal', x
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_lokal.py
+x wynosi 50
+Zmieniono lokalne x na 2
+x wynosi nadal 50
+</pre>
+
+Jak to działa:
+
+Za pierwszym razem, gdy w funkcji używamy wartości zmiennej <code>x</code>, Python używa wartości zmiennej zadeklarowanej w funkcji.
+
+Następnie zmiennej <code>x</code> przypisujemy wartość <code>2</code>. Nazwa <code>x</code> jest lokalna dla naszej funkcji, więc gdy zmieniamy wartość <code>x</code> w funkcji, <code>x</code> zdefiniowane w bloku głównym pozostaje bez zmian.
+
+Wywołując <code>print</code> po raz ostatni, pokazujemy wartość <code>x</code> w bloku głównym i udowadniamy, że nie została naruszona.
+
+===Użycie wyrażenia global===
+Jeżeli wewnątrz funkcji chcesz przypisać wartość do nazwy zdefiniowanej w głównym bloku programu (czyli poza funkcjami i klasami), musisz powiedzieć Pythonowi, że nazwa nie jest lokalna, ale ''globalna''. Można to zrobić za pomocą wyrażenia <code>global</code>. Nie da się przypisać wartości do zmiennej zdefiniowanej poza funkcją bez użycia tego wyrażenia.
+
+Możesz używać wartości zmiennych znajdujących się poza funkcją (zakładając, że w jej wnętrzu nie ma innej zmiennej o tej samej nazwie). Jednakże to nie jest najlepszym rozwiązaniem i powinieneś tego unikać, ponieważ wtedy czytający program nie wie, gdzie dokładnie zmienna została zadeklarowana. Użycie wyrażenia <code>global</code> to odpowiedni znak, że zmienna jest zdefiniowana w bloku głównym.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_global.py
+
+x = 50
+
+def f():
+    global x
+    print 'x wynosi', x
+    x = 2
+    print 'Zmieniono globalne x na', x
+
+f()
+print 'Wartość x wynosi', x
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_global.py
+x wynosi 50
+Zmieniono globalne x na 2
+Wartość x wynosi 2
+</pre>
+
+Jak to działa:
+
+Używamy wyrażenia <code>global</code> w celu zadeklarowania, że <code>x</code> jest zmienną globalną &mdash; w związku z tym, gdy przypisujemy jakąś wartość do <code>x</code> we wnętrzu funkcji, widać tę zmianę również wtedy, gdy używamy <code>x</code> w głównym bloku programu.
+
+Możesz określać więcej niż jedną zmienną globalną w tej samej linijce, na przykład <code>global x, y, z</code>.
+
+==Domyślne wartości argumentów==
+W przypadku niektórych funkcji możesz zażyczyć sobie, aby niektóre parametry były ''opcjonalne'' i żeby przyjmowały domyślne wartości, gdy użytkownik nie chce wprowadzać do nich własnych argumentów. Możesz nadać domyślną wartość parametrowi tak, jakbyś przypisywał wartość zmiennej, czyli stawiając po nim znak przypisania (=) a następnie wartość, jaką ma przyjąć.
+
+Pamiętaj, że domyślna wartość powinna być stałą. Dokładniej mówiąc, wartość parametru powinna być niezmienna &mdash; powód poznasz później. Na razie ważne jest jedynie, abyś o tym pamiętał.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_domysl.py
+
+def powiedz(wiadomosc, ile = 1):
+    print wiadomosc * ile
+
+powiedz('Ahoj')
+powiedz('Przygodo!', 5)
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_domysl.py
+Ahoj
+Przygodo!Przygodo!Przygodo!Przygodo!Przygodo!
+</pre>
+
+Jak to działa:
+
+Funkcja <code>powiedz</code> ma wypisywać podaną jej wiadomość określoną ilość razy. Jeżeli nie podamy wartości, napis zostanie wyświetlony domyślnie, czyli raz. Osiągnęliśmy to przez przypisanie domyślnej wartości <code>1</code> do parametru <code>ile</code>.
+
+Przy pierwszym użyciu tej funkcji podaliśmy jedynie napis, który dzięki temu został wyświetlony jedynie raz. Za drugim razem, oprócz napisu dołożyliśmy argument <code>5</code>, a zatem uzyskaliśmy 5 powtórzeń napisu.
+
+;Ważne!
+: Domyślne wartości mogą posiadać jedynie te parametry, które są na końcu listy. Innymi słowy, nie możesz nadać wartości domyślnej parametrowi, jeżeli po nim wystąpi taki, który nie będzie jej posiadał (idąc wzdłuż ciągu parametrów danej funkcji).
+: Jest to spowodowane tym, że wartości są przypisywane według kolejności występowania parametrów. Na przykład możesz napisać <code>def funkcja(a, b = 5)</code>, ale ''nie możesz'' napisać <code>def funkcja(a = 5, b)</code>!
+
+==Argumenty ze słowem kluczowym==
+Jeżeli używasz funkcji z wieloma parametrami i chcesz podać tylko niektóre z nich, możesz przypisywać wartości przez nazywanie ich &mdash; mówimy na to ''argumenty ze słowem kluczowym''. Używamy nazwy (słowa kluczowego) zamiast właściwej pozycji (jak dotychczas zawsze robiliśmy), aby przekazać funkcji argumenty.
+
+Są dwie ''zalety'' tego podejścia &mdash; po pierwsze, używanie funkcji staje się łatwiejsze, ponieważ nie musimy się już martwić o kolejność, a po drugie, możemy nadać wartości jedynie tym parametrom, którym chcemy, pomijając po drodze te, których domyślne wartości wolimy zostawić w spokoju.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_klucz.py
+
+def f(a, b = 5, c = 10):
+    print 'a wynosi', a, 'zaś b wynosi', b, 'a c wynosi', c
+
+f(3, 7)
+f(25, c = 24)
+f(c = 50, a = 100)
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_klucz.py
+a wynosi 3 zaś b wynosi 7 a c wynosi 10
+a wynosi 25 zaś b wynosi 5 a c wynosi 24
+a wynosi 100 zaś b wynosi 5 a c wynosi 50
+</pre>
+
+Jak to działa:
+
+Ta funkcja posiada jeden parametr bez domyślnej wartości i dwa, które ją posiadają.
+
+Za pierwszym razem wpisujemy <code>f(3, 7)</code>, dzięki czemu parametr <code>a</code> dostaje wartość <code>3</code>, parametr <code>b</code> dostaje <code>7</code>, a parametr <code>c</code> domyślną wartość <code>10</code>.
+
+Za drugim razem wpisujemy <code>f(25, c = 24)</code>, więc parametr <code>a</code> otrzymuje wartość <code>25</code> (zgodnie z kolejnością), zaś parametr <code>c</code> dostaje <code>24</code>, dzięki słowu kluczowemu. Parametr <code>b</code> ma domyślną wartość <code>5</code>.
+
+Za trzecim razem wpisujemy <code>f(c = 50, a = 100)</code> używając jedynie słów kluczowych. Zauważ, że przypisujemy wartość najpierw parametrowi <code>c</code>, niezależnie od tego, że parametr <code>a</code> występuje wcześniej w deklaracji funkcji.
+
+==Wyrażenie return==
+Wyrażenia <code>return</code> używamy do wyjścia z funkcji. Możemy opcjonalnie zwrócić w tym momencie jakąś wartość.
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_return.py
+
+def maximum(x, y):
+    if x > y:
+        return x
+    else:
+        return y
+
+print maximum(2, 3)
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_return.py
+3
+</pre>
+
+Jak to działa:
+
+Funkcja <code>maximum</code> wyszukuje maksymalną wartość spośród podanych. Używa w tym celu prostej konstrukcji <tt>if...else</tt> a następnie zwraca tę wartość dzięki poleceniu <code>return</code>.
+
+Zauważ, że użycie wyrażenia <code>return</code> bez wartości jest równoznaczne z użyciem <code>return None</code>. <code>None</code> to specjalny typ w Pythonie, który reprezentuje po prostu nic. Używa się tego na przykład, gdy się chce przekazać, że zmienna nie ma wartości.
+
+Każda funkcja domyślnie otrzymuje na końcu <code>return None</code>, chyba że napiszesz własne <code>return</code>. Możesz to sprawdzić chociażby w ten sposób:
+
+<source lang="py">
+def funkcja():
+    pass
+print funkcja()
+</source>
+
+Wyrażenie <code>pass</code> wskazuje na pusty blok wyrażeń.
+
+;Uwaga
+: W Pythonie istnieje wbudowana funkcja <code>max</code>, która znajduje maksimum, więc możesz używać jej, zamiast pisać własną.
+
+==DocString==
+Python posiada sprytną funkcję zwaną ''documentation strings'' (po polsku wpisy dokumentacji &mdash; przyp. tłum.) znaną też pod skrótem ''docstrings''. Jest to potężne narzędzie, którego powinieneś często używać, gdyż pomaga w lepszej organizacji programu oraz ułatwia zrozumienie jego działania. Dodatkowo możemy nawet odzyskać ten wpis z, powiedzmy, funkcji, gdy program jest uruchomiony!
+
+Przykład:
+
+<source lang="py">
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Nazwa pliku: f_doc.py
+
+def printMax(x, y):
+    '''Wypisuje maksymalną liczbę spośród dwóch podanych.
+
+    Obydwie wartości muszą być liczbami całkowitymi.'''
+    x = int(x) # Zmienia na liczby całkowite, jeżeli to możliwe.
+    y = int(y)
+
+    if x > y:
+        print x, 'to maksimum'
+    else:
+        print y, 'to maksimum'
+
+printMax(3, 5)
+print printMax.__doc__
+</source>
+
+Rezultat:
+
+<pre>
+$ python f_doc.py
+5 to maximum
+Wypisuje maksymalną liczbę spośród dwóch podanych.
+
+    Obydwie wartości muszą być liczbami całkowitymi.
+</pre>
+
+Jak to działa:
+
+Tekst w pierwszej logicznej linijce funkcji to jej DocString (wpis dokumentacji). Pamiętaj, że wpisy mogą odnosić się również do [[Ukąś Pythona/Moduły|modułów]] oraz [[Ukąś Pythona/Programowanie zorientowane obiektowo|klas]], o czym powiemy sobie w odpowiednich rozdziałach.
+
+Według układu stosowanego we wpisach, docstring to wielolinijkowy tekst, w którym pierwsza linijka zaczyna się dużą literą i kończy kropką. Druga linijka jest pusta, a od trzeciej zaczynają się dokładniejsze wyjaśnienia. Zdecydowanie radzę ci stosować się do tego układu w każdym wpisie w każdej twojej niebanalnej funkcji.
+
+Możemy dostać się do wpisu funkcji <code>printMax</code> używając atrybutu <code>__doc__</code> (zauważ ''podwójne'' podkreślenia). Pamiętaj, że Python traktuje ''wszystko'' jak obiekty, nawet funkcje. Dowiemy się więcej o obiektach w rozdziale dotyczącym [[Ukąś Pythona/Programowanie zorientowane obiektowo|klas]].
+
+Jeżeli używałeś już <code>help()</code> w Pythonie, to już zauważyłeś użycie wpisów. To polecenie po prostu wyciąga z funkcji to, co atrybut <code>__doc__</code> i podaje w trochę bardziej eleganckiej formie. Możesz to wypróbować na swojej funkcji, po prostu wpisz w swoim programie <code>help(printMax)</code>. Nie zapomnij, że z <code>help</code> wychodzi się naciskając klawisz <tt>q</tt>.
+
+W taki sposób automatyczne narzędzia mogą uzyskać wpis z twoich programów, dlatego ''szczególnie'' zalecam ci umieszczanie wpisu w każdej twojej niebanalnej funkcji.
+
+==Podsumowanie==
+Poznaliśmy mnóstwo aspektów funkcji, ale oczywiście jest ich o wiele więcej. Pomimo to, zobaczyliśmy większość z tego, co bywa potrzebne podczas standardowego, codziennego używania Pythonowych funkcji.
+
+W kolejnym rozdziale dowiemy się, jak używać i tworzyć moduły w Pythonie.
+
+{{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Kontrola przepływu|Kontrola przepływu]]|[[Ukąś Pythona/Moduły|Moduły]]|}}
