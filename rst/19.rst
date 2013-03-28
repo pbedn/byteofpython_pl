@@ -1,0 +1,65 @@
+.. raw:: mediawiki
+
+   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]|[[Ukąś Pythona/Dodatek: Historia wersji|Dodatek: Historia wersji]]}}
+
+Kolofon
+-------
+
+Podczas tworzenia tej książki zostało użyte prawie wyłącznie *wolne i
+otwarte oprogramowanie*.
+
+Narodziny książki
+-----------------
+
+Kiedy pisałem pierwszy szkic tej książki, używałem systemu Red Hat 9.0
+Linux. Podczas pisania szóstego szkicu podstawą mojego systemu był Linux
+Fedora Core 3.
+
+Początkowo do pisania używałem programu KWord (patrz:
+`Wstęp <Ukąś Pythona/Wstęp#Lekcja_historii>`__).
+
+Dojrzewanie
+-----------
+
+Później przesiadłem się na DocBook XML, pisząc w programie Kate, ale
+szybko okazało się to zbyt męczące. Przesiadłem się więc tym razem na
+OpenOffice, który okazał się świetnym wyborem ze względu na szerokie
+możliwości formatowania i funkcję eksportu do PDF. Niestety kod HTML
+generowany przez OpenOffice był bardzo niechlujny.
+
+Wreszcie odkryłem XEmacs i przepisałem książkę od zera ponownie do
+DocBook XML. Podjąłem wtedy decyzję, że ten format będzie
+długoterminowym rozwiązaniem.
+
+Pisząc szóstą wersję, zacząłem używać oprogramowania Quanta+ do edycji
+źródła. Używałem standardowych stylów XSL, które były dostarczone wraz z
+systemem Fedora Core 3. Zdecydowałem się również na standardowe
+czcionki. Napisałem tylko styl CSS, aby nadać odpowiedni wygląd stronom
+HTML. Napisałem też, oczywiście w Pythonie, prosty analizator składni
+Pythona, aby zapewnić wszystkim programom w książce automatyczne
+podświetlanie składni.
+
+Obecnie
+-------
+
+Obecnie pracuję nad siódmą wersją i podstawą całego mojego
+`systemu <http://www.swaroopch.com/notes/>`__ jest oprogramowanie
+`MediaWiki <http://www.mediawiki.org/>`__. Dzięki temu wszystko znajduje
+się w sieci, a czytelnicy od razu widzą moje edycje oraz sami mogą
+czytać, edytować i dyskutować na temat książki w jednym miejscu.
+
+Mimo to nadal używam Vima do edycji źródła. Umożliwia mi to dodatek
+`ViewSourceWith <https://addons.mozilla.org/en-US/firefox/addon/394>`__
+do Firefoksa, który wspaniale integruje się z Vimem.
+
+O autorze
+---------
+
+Dostępne pod adresem
+`http://www.swaroopch.com/about/ <http://www.swaroopch.com/about/>`__
+(strona w jęz. angielskim).
+
+.. raw:: mediawiki
+
+   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]|[[Ukąś Pythona/Dodatek: Historia wersji|Dodatek: Historia wersji]]}}
+

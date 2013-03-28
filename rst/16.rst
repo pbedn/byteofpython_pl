@@ -1,0 +1,299 @@
+.. raw:: mediawiki
+
+   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|[[Ukąś Pythona/Co dalej?|Co dalej?]]|}}
+
+Wprowadzenie
+------------
+
+Jak dotychczas, poznaliśmy już większość aspektów Pythona, których
+będziesz używać. W tym rozdziale zajmiemy się jeszcze kilkoma innymi,
+które mogą się przydać.
+
+Rozmieszczanie wszędzie krotek
+------------------------------
+
+Czy marzyłeś kiedyś o tym, żeby funkcja zwracała dwie wartości? W
+Pythonie wystarczy użyć do tego krotki.
+
+.. code:: py
+
+    >>> def szczegoly_bledu():
+    ...     return (2, 'dalsze szczegóły')
+    ...
+    >>> bladnum, bladstr = szczegoly_bledu()
+    >>> bladnum
+    2
+    >>> bladstr
+    'dalsze szczegóły'
+
+Zauważ, że użycie ``a, b = &lt;jakieś wyrażenie&gt;`` interpretuje wynik
+tego wyrażenia jako dwuelementową krotkę.
+
+Krotka musi zawierać dokładnie tyle elementów, ilu zmiennym chcemy
+przypisywać wartość. Po wpisaniu na przykład ``a, b = (1, 2, 3)`` lub
+``a, b = 'abc'``, Python nam powie, że jest za dużo wartości do
+przypisania. Analogicznie przy wpisaniu ``a, b, c = (1, 2)`` lub
+``a, b, c = 'ab'``, Python powie, że wartości jest za mało.
+
+To przy okazji oznacza, że najszybszym sposobem na zamianę zmiennych
+miejscami w Pythonie jest:
+
+.. code:: py
+
+    >>> a = 5; b = 8
+    >>> a, b = b, a
+    >>> a, b
+    (8, 5)
+
+Specjalne metody
+----------------
+
+Istnieją pewne metody, takie jak ``__init__`` lub ``__del__``, które
+mają specjalne znaczenie w klasach.
+
+Specjalne metody służą do naśladowania konkretnych zachowań wbudowanych
+typów. Na przykład, gdy chcesz używać w swojej klasie operatora
+indeksowania ``obiekt[element]`` (tak, jak to wygląda w krotkach czy
+listach), to wszystko, co musisz zrobić, to zaimplementować metodę
+``__getitem__`` i gotowe. Gdyby się nad tym zastanowić, Python robi
+dokładnie to samo dla klasy ``list``.
+
+Kilka użytecznych metod wypisałem w tej tabeli. Jeżeli chcesz poznać
+wszystkie, `zajrzyj do
+dokumentacji <http://docs.python.org/reference/datamodel.html#special-method-names>`__
+(dokumentacja w jęz. angielskim).
+
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Nazwa                        | Wyjaśnienie                                                                                                                                             |
++==============================+=========================================================================================================================================================+
+| \_\_init\_\_(self, ...)      | Ta metoda jest wywoływana zaraz przed oddaniem do użytku nowego obiektu tej klasy.                                                                      |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \_\_del\_\_(self)            | Wywoływana zaraz przed usunięciem obiektu.                                                                                                              |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \_\_str\_\_(self)            | Wywoływana przy użyciu ``print`` lub ``str``                                                                                                            |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \_\_lt\_\_(self, other)      | Wywoływana przy użyciu operatora *mniejsze niż* (``&lt;``). Podobnie istnieją też specjalne metody dla pozostałych operatorów (``+``, ``&gt;``, itd.)   |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \_\_getitem\_\_(self, key)   | Wywoływana przy użyciu operatora indeksowania.                                                                                                          |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| \_\_len\_\_(self)            | Wywoływana przy użyciu funkcji ``len`` na obiekcie sekwencyjnym.                                                                                        |
++------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Table: **Kilka specjalnych metod**
+
+Bloki pojedynczych wyrażeń
+--------------------------
+
+Jak wiemy z poprzednich lekcji, każdy blok wyrażeń jest oddzielony od
+reszty programu odpowiednim wcięciem. Jest jednak możliwy wyjątek od tej
+reguły. Jeżeli twój blok zawiera tylko jedno wyrażenie, możesz zapisać
+je w tej samej linii, co ``if``, czy ``def``. Ten przykład powinien
+wszystko wyjaśnić:
+
+.. code:: py
+
+    >>> flaga = True
+    >>> if flaga: print 'Tak'
+    ...
+    Tak
+
+Jak widzisz, pojedyncze wyrażenie nie zostało przeniesione do bloku.
+Pomimo tego, że to skraca program, szczerze odradzam ci stosowanie tej
+metody, nie licząc sprawdzania błędów. Program staje się czytelniejszy
+oraz wiele łatwiej dodać kolejną linijkę, gdy używasz właściwych wcięć.
+
+Wyrażenie lambda
+----------------
+
+Wyrażenie ``lambda`` służy do tworzenia nowych obiektów funkcji i
+zwracania ich podczas uruchamiania programu.
+
+Przykład:
+
+.. code:: py
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    # Nazwa pliku: lambda.py
+
+    def powtarzaj(n):
+        return lambda s: s*n
+
+    dwukrotnie = powtarzaj(2)
+
+    print dwukrotnie('słowo')
+    print dwukrotnie(5)
+
+Rezultat:
+
+::
+
+    $ python lambda.py
+    słowosłowo
+    10
+
+Jak to działa:
+
+Tutaj używamy funkcji ``powtarzaj`` do utworzenia nowych obiektów
+funkcji w trakcie działania programu i do zwracania ich. Wyrażenia
+``lambda`` użyliśmy właśnie do tworzenia nowych obiektów. W gruncie
+rzeczy, ``lambda`` wygląda jak funkcja z parametrem i tylko jednym
+wyrażeniem. To wyrażenie staje się ciałem nowej funkcji, która zwraca
+jego wartość. Pamiętaj, że wewnątrz lambdy nie może być nawet polecenia
+``print``, jedynie wyrażenia.
+
+Lista składana
+--------------
+
+Listy składane używamy do tworzenia list z już istniejących list.
+Przypuśćmy, że masz listę liczb i chcesz z tego stworzyć listę, w której
+znajdą się wszystkie liczby z listy pierwotnej, które są większe od 2,
+pomnożone przez 2.
+
+Przykład:
+
+.. code:: py
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    # Nazwa pliku: lista_skladana.py
+
+    lista1 = [2, 3, 4]
+    lista2 = [2*i for i in lista1 if i>2]
+    print lista2
+
+Rezultat:
+
+::
+
+    $ python lista_skladana.py
+    [6, 8]
+
+Jak to działa:
+
+Tworzymy nową listę, do której wstawiamy działanie (``2*i``) oraz
+warunek (``if i&gt;2``). Możesz sprawdzić, że stara lista pozostaje
+niezmieniona.
+
+Zaletą używania list złożonych jest to, że w ten sposób zmniejsza się
+ilość potrzebnego kodu, gdy używamy pętli do przetwarzania każdego
+elementu z listy i wstawiania go do nowej.
+
+Otrzymywanie krotek i słowników w funkcjach
+-------------------------------------------
+
+Istnieje specjalny sposób na zapisanie w funkcji parametrów w formie
+krotki lub słownika, używając odpowiednio prefiksu ``*`` lub ``**``.
+Przydaje się to, gdy funkcja ma przyjmować różną liczbę parametrów.
+
+Przykład:
+
+.. code:: py
+
+    >>> def suma_poteg(potega, *argumenty):
+    ...     '''Zwraca sumę argumentów podniesionych do podanej potęgi.'''
+    ...     suma = 0
+    ...     for i in argumenty:
+    ...         suma += pow(i, potega)
+    ...     return suma
+    ...
+    >>> suma_poteg(2, 3, 4)
+    25
+    >>> suma_poteg(2, 10)
+    100
+
+Ponieważ przed parametrem ``argumenty`` daliśmy prefiks ``*``, wszystkie
+argumenty, poza pierwszym, wylądowały w tym parametrze jako krotka.
+Gdyby zamiast tego został użyty prefiks ``**``, argumenty (zapisane w
+postaci ``klucz = wartość``) zostaną uznane za pary klucz–wartość
+słownika.
+
+Funkcje exec i eval
+-------------------
+
+Funkcja ``exec`` (z angielskiego *execute* — wykonywać) służy do
+wykonywania Pythonowych poleceń, które są zapisane w tekście lub w
+pliku, tak, jakby były zapisane normalnie w programie.
+
+Przykład:
+
+.. code:: py
+
+    >>> exec('print "Ahoj, przygodo!"')
+    Ahoj, przygodo!
+
+Podobnie, funkcja ``eval`` (z angielskiego *evaluate* — oceniać,
+szacować) służy do wliczania wyrażeń zapisanych w tekście.
+
+Przykład:
+
+.. code:: py
+
+    >>> eval('2*3')
+    6
+
+Wyrażenie assert
+----------------
+
+Wyrażenie ``assert`` służy do upewniania się, że coś jest prawdą. Na
+przykład, gdy jesteś naprawdę pewien, że lista zawiera co najmniej jeden
+element i chcesz to sprawdzić, przy czym gdyby to było nieprawdą, ma
+wyskoczyć błąd, to wtedy właśnie powinieneś użyć tego wyrażenia. Gdy
+``assert`` wykaże fałsz, wywołany zostaje błąd typu ``AssertionError``.
+
+Przykład:
+
+.. code:: py
+
+    >>> lista = ['rzecz']
+    >>> assert len(lista) >= 1
+    >>> lista.pop()
+    'rzecz'
+    >>> lista
+    []
+    >>> assert len(lista) >= 1
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AssertionError
+
+To wyrażenie powinno być używane bardzo rozważnie. Zazwyczaj o wiele
+lepiej jest ustalić wyjątki niż w wypadku problemu pokazać
+użytkownikowi, że jest błąd i zakończyć program.
+
+Funkcja repr
+------------
+
+Dzięki funkcji ``repr`` można uzyskać kanoniczną, tekstową reprezentację
+obiektu. Co ciekawe, najczęściej ``eval(repr(obiekt)) == obiekt`` będzie
+prawdą.
+
+.. code:: py
+
+    >>> i = []
+    >>> i.append('rzecz')
+    >>> repr(i)
+    "['rzecz']"
+    >>> eval(repr(i))
+    ['rzecz']
+    >>> eval(repr(i)) == i
+    True
+
+Zasadniczo, funkcja ``repr`` służy do uzyskiwania reprezentacji obiektu
+nadającej się do druku. Możesz określić, co zwróci twoja klasa podczas
+użycia na niej tej funkcji, poprzez określenie w niej metody
+``__repr__``.
+
+Podsumowanie
+------------
+
+Poznaliśmy w tym rozdziale jeszcze kilka cech Pythona, lecz nadal nie
+wszystkie. Aczkolwiek, poznaliśmy już większość tego, co ci będzie
+kiedykolwiek potrzebne. To zdecydowanie wystarczy, żebyś zaczął pracę
+nad jakimikolwiek programami.
+
+W następnym rozdziale powiemy sobie, jak dalej odkrywać Pythona.
+
+.. raw:: mediawiki
+
+   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|[[Ukąś Pythona/Co dalej?|Co dalej?]]|}}
+
