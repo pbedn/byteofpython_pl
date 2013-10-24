@@ -1,4 +1,4 @@
-.. _ByteOfPython-index:
+.. _ByteOfPython2-index:
 
 Wstęp
 =====
