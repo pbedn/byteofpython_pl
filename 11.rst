@@ -1,6 +1,8 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Struktury danych|Struktury danych]]|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|}}
+Rozwiązywanie problemów
+=======================
+
+
 
 Wprowadzenie
 ------------
@@ -483,8 +485,4 @@ jak to zrobiliśmy wspólnie w tym rozdziale. To bardzo pomoże Ci w
 zaprzyjaźnieniu się z tym językiem.
 
 Teraz porozmawiamy o programowaniu orientowanym obiektowo.
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Struktury danych|Struktury danych]]|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|}}
 

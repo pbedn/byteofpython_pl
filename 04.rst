@@ -1,6 +1,6 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Instalowanie Pythona|Instalowanie Pythona]]|[[Ukąś Pythona/Podstawy|Podstawy]]|}}
+Pierwsze kroki
+==============
 
 Wprowadzenie
 ------------
@@ -389,7 +389,4 @@ już sprawiać żadnych trudności.
 Skoro już umiemy posługiwać się Pythonem, poznajmy więcej koncepcji
 dotyczących tego języka.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Instalowanie Pythona|Instalowanie Pythona]]|[[Ukąś Pythona/Podstawy|Podstawy]]|}}
 

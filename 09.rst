@@ -1,6 +1,6 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Funkcje|Funkcje]]|[[Ukąś Pythona/Struktury danych|Struktury danych]]|}}
+Moduły
+======
 
 Wprowadzenie
 ------------

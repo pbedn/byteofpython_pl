@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|[[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]|}}
+Podstawy
+========
+
 
 Wprowadzenie
 ------------
@@ -442,8 +443,4 @@ przejść do czegoś bardziej interesującego, jak na przykład kontrola
 przepływu. Zanim jednak to zrobimy, upewnij się, że oswoiłeś się ze
 wszystkim, co było w tym rozdziale, a zrozumienie tego nie sprawia Ci
 problemu.
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|[[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]|}}
 

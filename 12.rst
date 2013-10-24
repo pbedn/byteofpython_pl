@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Rozwiązywanie problemów|Rozwiązywanie problemów]]|[[Ukąś Pythona/Wejście-Wyjście|Wejście-Wyjście]]|}}
+Programowanie zorientowane obiektowo
+====================================
+
 
 Wprowadzenie
 ------------

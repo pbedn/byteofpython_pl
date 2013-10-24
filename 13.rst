@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|[[Ukąś Pythona/Wyjątki|Wyjątki]]|}}
+Wejście-Wyjście
+===============
+
 
 Wprowadzenie
 ------------
@@ -237,7 +238,4 @@ obiektów w pliku, czyli *picklowanie*.
 
 Następne w kolejności są wyjątki.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Programowanie zorientowane obiektowo|Programowanie zorientowane obiektowo]]|[[Ukąś Pythona/Wyjątki|Wyjątki]]|}}
 

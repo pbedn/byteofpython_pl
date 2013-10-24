@@ -1,6 +1,8 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wejście-Wyjście|Wejście-Wyjście]]|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|}}
+Wyjątki
+=======
+
+
 
 Wprowadzenie
 ------------
@@ -277,7 +279,4 @@ Dodatkowo dowiedzieliśmy się, jak tworzyć i zgłaszać wyjątki.
 
 Dalej poznamy bibliotekę standardową Pythona.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wejście-Wyjście|Wejście-Wyjście]]|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|}}
 

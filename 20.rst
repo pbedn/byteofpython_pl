@@ -1,8 +1,6 @@
-.. raw:: mediawiki
+Dodatek: Historia wersji
+========================
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: O książce i autorze|Dodatek: O książce i autorze]]}}
-
-\_\_TOC\_\_
 
 Wersje *Byte of Python*
 -----------------------
@@ -111,8 +109,4 @@ Wersje tłumaczenia
    -  Pierwsze pełne tłumaczenie, oparte o *Byte of Python* v1.92,
       jednak traktujące o Pythonie 2.x, a więc czerpiące również z
       wersji 1.20.
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: O książce i autorze|Dodatek: O książce i autorze]]}}
 

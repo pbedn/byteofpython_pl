@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wyjątki|Wyjątki]]|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|}}
+Biblioteka standardowa
+======================
+
 
 Wprowadzenie
 ------------
@@ -292,7 +293,4 @@ W następnej części zajmiemy się różnymi aspektami Pythona, które
 sprawią, że nasza wycieczka po zakamarkach tego języka będzie bardziej
 kompletna.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wyjątki|Wyjątki]]|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|}}
 

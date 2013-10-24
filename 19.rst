@@ -1,6 +1,6 @@
-.. raw:: mediawiki
+Dodatek: O książce i autorze
+============================
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]|[[Ukąś Pythona/Dodatek: Historia wersji|Dodatek: Historia wersji]]}}
 
 Kolofon
 -------
@@ -58,8 +58,4 @@ O autorze
 Dostępne pod adresem
 `http://www.swaroopch.com/about/ <http://www.swaroopch.com/about/>`__
 (strona w jęz. angielskim).
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]|[[Ukąś Pythona/Dodatek: Historia wersji|Dodatek: Historia wersji]]}}
 

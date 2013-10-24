@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Operatory i wyrażenia|Operatory i wyrażenia]]|[[Ukąś Pythona/Funkcje|Funkcje]]|}}
+Kontrola przepływu
+==================
+
 
 Wprowadzenie
 ------------

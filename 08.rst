@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Kontrola przepływu|Kontrola przepływu]]|[[Ukąś Pythona/Moduły|Moduły]]|}}
+Funkcje
+=======
+
 
 Wprowadzenie
 ------------
@@ -469,8 +470,4 @@ podczas standardowego, codziennego używania Pythonowych funkcji.
 
 W kolejnym rozdziale dowiemy się, jak używać i tworzyć moduły w
 Pythonie.
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Kontrola przepływu|Kontrola przepływu]]|[[Ukąś Pythona/Moduły|Moduły]]|}}
 

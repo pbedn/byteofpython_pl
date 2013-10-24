@@ -1,6 +1,6 @@
-.. raw:: mediawiki
+Dodatek: FLOSS
+==============
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Co dalej?|Co dalej?]]|[[Ukąś Pythona/Dodatek: O książce i autorze|Dodatek: O książce i autorze]]}}
 
 Wolne i Otwarte Oprogramowanie
 ------------------------------
@@ -96,10 +96,6 @@ Aby uzyskać maksimum informacji, koniecznie zajrzyj na:
 -  `SourceForge.net <http://sourceforge.net/>`__
 -  `freshmeat.net <http://freshmeat.net/>`__
 
-Więc śmiało, idź i poznawaj wielki świat Wolnego i Otwartego
+Tak więc śmiało, idź i poznawaj wielki świat Wolnego i Otwartego
 Oprogramowania!
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Co dalej?|Co dalej?]]|[[Ukąś Pythona/Dodatek: O książce i autorze|Dodatek: O książce i autorze]]}}
 

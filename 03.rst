@@ -1,6 +1,6 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wprowadzenie|Wprowadzenie]]|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|}}
+Instalowanie Pythona
+====================
 
 Dla użytkowników Windows
 ------------------------
@@ -128,7 +128,4 @@ masz zainstalowanego Pythona.
 
 Przyszedł czas, aby napisać nasz pierwszy program w Pythonie.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wprowadzenie|Wprowadzenie]]|[[Ukąś Pythona/Pierwsze kroki|Pierwsze kroki]]|}}
 

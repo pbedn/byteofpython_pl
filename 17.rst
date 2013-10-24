@@ -1,6 +1,8 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]}}
+Co dalej?
+=========
+
+
 
 Jeżeli przeczytałeś gruntownie tę książkę i trenowałeś pisanie wielu
 programów, Python musiał stać się dla ciebie przyjaznym i wygodnym
@@ -269,8 +271,4 @@ właśnie tego języka. Możesz zacząć automatyzować swój komputer, aby sam
 wykonywał mnóstwo rzeczy, których wcześniej nawet sobie nie wyobrażałeś,
 możesz pisać własne gry, masz teraz naprawdę niesamowite możliwości!
 Więc, do roboty!
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Więcej Pythona|Więcej Pythona]]|[[Ukąś Pythona/Dodatek: FLOSS|Dodatek: FLOSS]]}}
 

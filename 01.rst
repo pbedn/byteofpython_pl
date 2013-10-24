@@ -1,7 +1,7 @@
-.. raw:: mediawiki
+.. _ByteOfPython-index:
 
-   {{Nawigacja|Ukąś Pythona||[[Ukąś Pythona/Wprowadzenie|Wprowadzenie]]|}}
-
+Wstęp
+=====
 
 Dla kogo jest ta książka?
 -------------------------
@@ -154,7 +154,4 @@ Do przemyślenia
 -  „Sukces w życiu jest sprawą nie tyle talentu i możliwości, co
    skupienia i wytrwałości”. — C. W. Wendte
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona||[[Ukąś Pythona/Wprowadzenie|Wprowadzenie]]|}}
 

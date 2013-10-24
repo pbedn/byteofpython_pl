@@ -1,6 +1,7 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|[[Ukąś Pythona/Co dalej?|Co dalej?]]|}}
+Więcej Pythona
+==============
+
 
 Wprowadzenie
 ------------
@@ -293,7 +294,4 @@ nad jakimikolwiek programami.
 
 W następnym rozdziale powiemy sobie, jak dalej odkrywać Pythona.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Biblioteka standardowa|Biblioteka standardowa]]|[[Ukąś Pythona/Co dalej?|Co dalej?]]|}}
 

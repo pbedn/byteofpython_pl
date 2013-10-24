@@ -1,6 +1,6 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Moduły|Moduły]]|[[Ukąś Pythona/Rozwiązywanie problemów|Rozwiązywanie problemów]]|}}
+Struktury danych
+================
 
 Wprowadzenie
 ------------
@@ -626,7 +626,4 @@ Będą one niezbędne przy pisaniu programów o sensownych rozmiarach.
 Teraz, gdy już mamy opanowane wiele z podstaw Pythona, zobaczymy, jak
 zaprojektować i stworzyć Pythonowy program z prawdziwego zdarzenia.
 
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Moduły|Moduły]]|[[Ukąś Pythona/Rozwiązywanie problemów|Rozwiązywanie problemów]]|}}
 

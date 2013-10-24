@@ -1,6 +1,6 @@
-.. raw:: mediawiki
 
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wstęp|Wstęp]]|[[Ukąś Pythona/Instalowanie Pythona|Instalowanie Pythona]]|}}
+Wprowadzenie
+============
 
 Wprowadzenie
 ------------
@@ -210,8 +210,4 @@ programistów Google. Również Guido van Rossum (twórca Pythona) `dołączył
 do Google <http://www.artima.com/weblogs/viewpost.jsp?thread=143947>`__
 i może pracować nad kolejną wersją Pythona przez połowę swojego czasu
 pracy.
-
-.. raw:: mediawiki
-
-   {{Nawigacja|Ukąś Pythona|[[Ukąś Pythona/Wstęp|Wstęp]]|[[Ukąś Pythona/Instalowanie Pythona|Instalowanie Pythona]]|}}
 
