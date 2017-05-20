@@ -1,4 +1,4 @@
-# Wstęp do Pythona
+# Wstęp do Pythona {#readme}
 
 Jest to polskie tłumaczenie książki "A Byte of Python" autorstwa C.H. Swaroop'a znajdującej się pod adresem [python.swaroopch.com](https://python.swaroopch.com/). Jest wprowadzeniem do programowania w jezyku Python, skierowanym do początkujących programistów. Jak napisane we wstępie do oryginalnej anglojęzycznej książki, jeśli jedyne co potrafisz na komputerze to zapisywać pliki tekstowe, to ta pozycja będzie dla Ciebie idealna.
 
@@ -14,7 +14,7 @@ Uaktualnione i poprawione przez Pawła Bednarza.
 
 ## Licencja
 
-Ta książka znajduje się pod licencją [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by/4.0/deed.pl).
+Tłumaczenie, jak również oryginalna książka, wydane są na licencji [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by/4.0/deed.pl).
 
 Kody i skrypty umieszczone w książce znajdują się pod licencją [3-klauzulowa licencja BSD](https://opensource.org/licenses/BSD-3-Clause).
 
