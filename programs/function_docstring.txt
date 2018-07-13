@@ -1,0 +1,5 @@
+$ python function_docstring.py
+5 is maximum
+Wypisuje maksymalną liczbę spośród dwóch podanych.
+
+    Obydwie wartości muszą być liczbami całkowitymi.
